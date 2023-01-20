@@ -1,7 +1,18 @@
 /* You can add global styles to this file, and also import other style files */
+@import "src/fonts.scss";
 
 body {
   margin: 0;
+
+
+  background-color: #1F232E;
+  background-image: url('/assets/images/mainBgc.png');
+  background-size:50% 50%;
+  font-size: 14px;
 }
 
 
+
+* {
+  font-family: "ttTravel";
+}
