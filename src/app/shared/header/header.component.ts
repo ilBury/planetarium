@@ -35,6 +35,7 @@ export class HeaderComponent {
     return this.progressValue;
   }
 
+
  /*  foo(event: any): void {
     console.log(this.star!.style.left);
     if(this.checkChange) {
