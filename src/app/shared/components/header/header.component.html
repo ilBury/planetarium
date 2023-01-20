@@ -1,0 +1,17 @@
+<header class="wrapper">
+  <div class="logo"><img src="assets/images/logo.png" alt=""></div>
+  <div class="header-progress-navigation">
+    <div class="header-progress">
+      <mat-progress-bar mode="determinate" [value]="progressValue" class="matProgress" ></mat-progress-bar>
+      <img src="assets/images/Vector.png" alt="" class="star" color="#1F232E">
+    </div>
+
+    <div class="header-navigation" >
+      <a id="first" (click)="changeProgress($event)" >Сеансы</a>
+      <a (click)="changeProgress($event)">О нас</a>
+      <a (click)="changeProgress($event)">Новости</a>
+      <a id="last" (click)="changeProgress($event)">Учебный центр</a>
+    </div>
+  </div>
+  <div class="logIn"><button>Вход</button></div>
+</header>
