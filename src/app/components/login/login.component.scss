@@ -1,0 +1,73 @@
+:host {
+  .login-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .wrapper {
+      width: 450px;
+      height: 450px;
+      background-color: #000000;
+      border-radius: 20px;
+      padding: 0 75px 0 75px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      margin: 20px 0 150px 0;
+      position: relative;
+      h3 {
+        color: blue;
+      }
+      #loginAndRegisterPicture {
+        position: absolute;
+        width: 350px;
+        height: 500px;
+        right: -300px;
+        top: 100px;
+      }
+      .create-account-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        color: #FFFFFF;
+        input {
+          color: #FFFFFF;
+        }
+      }
+      .btn-AndRegistr {
+        display: flex;
+        flex-direction: column;
+
+        button {
+          height: 50px;
+          color: #000000;
+          font-weight: 600;
+          margin-bottom: 15px;
+        }
+        span {
+          opacity: 40%;
+          a {
+            color: blue;
+          }
+        }
+
+      }
+
+    }
+  }
+  ::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background-color: #000000;
+
+  }
+
+  ::ng-deep .mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label {
+    color: #FFFFFF;
+    opacity: 40%;
+  }
+  ::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::before {
+    border-bottom-color: #FFFFFF;
+    opacity: 40%;
+  }
+  ::ng-deep .mdc-text-field--filled .mdc-line-ripple::after {
+    border-bottom-color: blue;
+  }
+}

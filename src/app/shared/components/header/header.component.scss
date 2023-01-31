@@ -20,10 +20,9 @@
     width: 100%;
     z-index: 5;
     height: 1px;
+    background-color: #ffffff;
   }
-  .matProgress {
-    color: #000000 !important;
-  }
+
 
   .header-progress {
     align-items: center;
@@ -59,8 +58,8 @@
 
 
   .star {
-    width: 20px;
-    height: 20px;
+    width: 15px;
+    height: 15px;
     position: absolute;
     z-index: 6;
     display: none;
@@ -70,8 +69,8 @@
   .logo{
     display: flex;
     flex-direction: column-reverse;
-    width: 110px;
-    padding-left: 20px;
+    width: 130px;
+    padding-left: 50px;
     img {
       height: 25px;
     }
@@ -80,7 +79,7 @@
   .logIn {
     display: flex;
     flex-direction: column-reverse;
-    padding-right: 20px;
+    padding-right: 50px;
     button {
       background-color: rgba(28,28,28,0);
       height: 40px;

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { ViewEncapsulation } from '@angular/compiler';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-view',
