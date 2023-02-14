@@ -12,14 +12,21 @@ import { LoginComponent } from './components/login/login.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { RegistrationComponent } from './components/registration/registration.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { CommonModule } from '@angular/common';
+import { AuthService } from './shared/services/auth.service';
+import {MatChipsModule} from '@angular/material/chips';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    RegistrationComponent,
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
     AppRoutingModule,
@@ -28,9 +35,11 @@ import {MatSidenavModule} from '@angular/material/sidenav';
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSidenavModule
+    MatSnackBarModule,
+    MatSidenavModule,
+    MatChipsModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

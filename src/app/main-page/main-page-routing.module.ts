@@ -1,15 +1,28 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { ViewComponent } from './components/view/view.component';
-import { MainPageModule } from './main-page.module';
-import { CommonModule } from '@angular/common';
-import { HeaderComponent } from '../shared/components/header/header.component';
+import { SessionsComponent } from './components/sessions/sessions.component';
+import { BookingPageComponent } from './components/booking-page/booking-page.component';
 
 
 const routes: Routes = [
  {
   path: '',
+  redirectTo: 'view',
+  pathMatch: 'full'
+ },
+ {
+  path: 'view',
   component: ViewComponent,
+ },
+ {
+  path: 'sessions',
+  component: SessionsComponent,
+
+ },
+ {
+  path: 'booking',
+  component: BookingPageComponent,
  }
 ];
 

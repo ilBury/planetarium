@@ -15,7 +15,7 @@
       margin: 20px 0 150px 0;
       position: relative;
       h3 {
-        color: blue;
+        color: #6858DC;
       }
       #loginAndRegisterPicture {
         position: absolute;
@@ -36,17 +36,18 @@
       .btn-AndRegistr {
         display: flex;
         flex-direction: column;
-
+        color: #9E9E9E;
         button {
           height: 50px;
           color: #000000;
+          background-color: #6858DC;
           font-weight: 600;
           margin-bottom: 15px;
         }
         span {
-          opacity: 40%;
           a {
-            color: blue;
+            color: #6858DC;
+            cursor: pointer;
           }
         }
 
@@ -56,18 +57,30 @@
   }
   ::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) {
     background-color: #000000;
-
   }
-
   ::ng-deep .mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label {
-    color: #FFFFFF;
-    opacity: 40%;
+    color: #9E9E9E;
   }
   ::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::before {
-    border-bottom-color: #FFFFFF;
-    opacity: 40%;
+    border-bottom-color: #9E9E9E;
   }
   ::ng-deep .mdc-text-field--filled .mdc-line-ripple::after {
-    border-bottom-color: blue;
+    border-bottom-color: #6858DC;
+  }
+  ::ng-deep .mat-mdc-form-field-error {
+    color: var(--mdc-theme-error, #82ED2E);
+  }
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+  -webkit-text-fill-color: #FFFFFF;
+  -webkit-box-shadow: 0 0 0px 1000px #000000 inset;
+  transition: background-color 5000s ease-in-out 0s;
   }
 }

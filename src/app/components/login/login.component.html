@@ -1,19 +1,37 @@
 <div class="login-container">
   <div class="wrapper">
     <h3>/ Вход</h3>
-    <form class="create-account-form">
+    <form class="create-account-form" [formGroup]="form">
       <mat-form-field appearance="fill">
         <mat-label>Логин</mat-label>
-        <input matInput >
+        <input matInput [formControl]="form.controls.login">
+        <mat-error *ngIf="form.controls.login.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="form.controls.login.hasError('maxlength')">
+          Password length must be less then 19 chars
+        </mat-error>
+        <mat-error *ngIf="form.controls.login.hasError('invalid')">
+          Password can include latin letters numbers
+        </mat-error>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Пароль</mat-label>
-        <input matInput >
+        <input matInput [formControl]="form.controls.password">
+        <mat-error *ngIf="form.controls.password.hasError('required')">
+          Password is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="form.controls.password.hasError('minlength')">
+          Password length must be at list 8 chars
+        </mat-error>
+        <mat-error *ngIf="form.controls.password.hasError('invalid')">
+          Password must include latin letters, numbers and special chars
+        </mat-error>
       </mat-form-field>
     </form>
     <div class="btn-AndRegistr">
-      <button mat-flat-button color="primary">Далее</button>
-      <span>У вас нет аккаунта?<a> Регистрация</a></span>
+      <button type="submit" mat-flat-button color="primary" (click)="login()">Далее</button>
+      <span>У вас нет аккаунта?<a (click)="registration()"> Регистрация</a></span>
     </div>
     <img id="loginAndRegisterPicture" src="assets/images/loginAndRegisterPicture.png" alt="">
   </div>

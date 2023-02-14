@@ -56,9 +56,10 @@ body {
 } */
 
 * {
-  font-family: "ttTravel" !important;
-
+  font-family: "ttTravel";
 }
 
+
 html, body { height: 100%; }
-body { margin: 0; }
+body {
+   margin: 0;}

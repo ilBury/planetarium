@@ -1,0 +1,162 @@
+:host {
+  .registration-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .wrapper {
+      width: 450px;
+      height: 500px;
+      background-color: #000000;
+      border-radius: 20px;
+      padding: 0 75px 0 75px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      margin: 20px 0 150px 0;
+      position: relative;
+      h3 {
+        color: #6858DC;
+      }
+      #loginAndRegisterPicture {
+        position: absolute;
+        width: 350px;
+        height: 500px;
+        right: -300px;
+        top: 100px;
+      }
+      .create-account-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        color: #9E9E9E;
+        input {
+          color: #FFFFFF;
+        }
+      }
+      .btn-AndRegistr {
+        display: flex;
+        flex-direction: column;
+        color: #9E9E9E;
+        button {
+          height: 50px;
+          color: #000000;
+          background-color: #6858DC;
+          font-weight: 600;
+          margin-bottom: 15px;
+        }
+        span {
+          a {
+            color: #6858DC;
+          }
+        }
+      }
+    }
+  }
+  ::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background-color: #000000;
+
+  }
+  ::ng-deep .mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label {
+    color: #9E9E9E;
+  }
+  ::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::before {
+    border-bottom-color: #9E9E9E;
+  }
+  ::ng-deep .mdc-text-field--filled .mdc-line-ripple::after {
+    border-bottom-color: #6858DC;
+  }
+
+  .choose-avatar-container, .choose-news-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    .wrapper {
+      width: 450px;
+      height: 550px;
+      background-color: #131617;
+      border-radius: 20px;
+      padding: 0 75px 0 75px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      margin: 20px 0 150px 0;
+      position: relative;
+      h3 {
+        font-size: 14px;
+        color: #6858DC;
+        padding-top: 10px;
+      }
+      .avatars {
+        height: 50%;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: flex-end;
+        img {
+          width: 60px;
+          height: 60px;
+          padding-right: 30px;
+          padding-top: 40px;
+        }
+      }
+      .btn-AndLogin {
+        display: flex;
+        flex-direction: column;
+        button {
+          height: 40px;
+          color: #000000;
+          background-color: #6858DC;
+          font-weight: 600;
+          margin-bottom: 15px;
+        }
+        span {
+          color: #9E9E9E;
+          a {
+            color: #6858DC;
+            cursor: pointer;
+          }
+        }
+      }
+      #chooseAvatarPicture {
+        position: absolute;
+        width: 330px;
+        height: 550px;
+        right: -275px;
+        top: 25px;
+      }
+    }
+  }
+
+  .choose-news-container {
+    .wrapper {
+      display: flex;
+      justify-content: space-between;
+
+      .wrapper-content {
+        padding-top: 20px;
+        height: 40%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+
+      .btn-AndLogin {
+        padding-bottom: 25px;
+        span {
+          color: #9E9E9E;
+          a {
+
+          }
+        }
+      }
+
+      #chooseNewsPicture {
+        position: absolute;
+        width: 280px;
+        height: 550px;
+        right: -275px;
+        top: 25px;
+      }
+    }
+  }
+
+}

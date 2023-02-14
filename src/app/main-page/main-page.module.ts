@@ -9,10 +9,18 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import { BookingPageComponent } from './components/booking-page/booking-page.component';
+import { SessionsComponent } from './components/sessions/sessions.component';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 @NgModule({
   declarations: [
-    ViewComponent
+    ViewComponent,
+    BookingPageComponent,
+    SessionsComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +32,11 @@ import {MatInputModule} from '@angular/material/input';
     MatExpansionModule,
     MatIconModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatCheckboxModule,
+    MatChipsModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   exports: [
     MatButtonModule

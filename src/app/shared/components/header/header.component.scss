@@ -4,8 +4,7 @@
     margin: 0px;
     padding: 0px;
     /* background-image: url('/assets/images/mainBgc.png'); */
-    color: #5E5E5E;
-
+    color: #9E9E9E;
   }
 
 
@@ -30,6 +29,7 @@
     display: flex;
     position: relative;
     height: 50px;
+
   }
 
   .header-progress-navigation {
@@ -73,6 +73,7 @@
     padding-left: 50px;
     img {
       height: 25px;
+      cursor: pointer;
     }
   }
 
@@ -123,5 +124,8 @@
 
   }
 
+  ::ng-deep .mat-mdc-progress-bar {
+    --mdc-linear-progress-active-indicator-color: #6858DC;
+}
 
 }
