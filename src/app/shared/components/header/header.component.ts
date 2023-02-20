@@ -1,7 +1,7 @@
 import { Component, Input, DoCheck, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, Subscription } from 'rxjs';
-import { AuthService } from '../../services/auth.service';
+import { find, Observable, Subscription } from 'rxjs';
+import { AuthService, users } from '../../services/auth.service';
 import { ChangeProgressService } from '../../services/change-progress.service';
 import { ForwardsService } from '../../services/forwards.service';
 import { RoleUsers } from '../../types/role-users.enum';
@@ -22,6 +22,9 @@ export class HeaderComponent implements OnInit  {
     return RoleUsers;
   }
 
+  public get _authService(): AuthService {
+    return this.authService;
+  }
 
   constructor(
     private changeProgressService: ChangeProgressService,
@@ -31,12 +34,15 @@ export class HeaderComponent implements OnInit  {
     private activatedRoute: ActivatedRoute
   ){
     authService.logTitle$.subscribe(value => {
-      this.userRoles = value;
+
+     this.userRoles = value;
+
     });
+
+
   }
 
   ngOnInit(): void {
-
 
   }
 
@@ -48,11 +54,10 @@ export class HeaderComponent implements OnInit  {
 
   login(): void {
     this.router.navigate(['login']);
-
   }
 
-  logout(): void {
-
+  personal(): void {
+    this.router.navigate(['personal']);
   }
 
   forwardView(): void {
@@ -61,6 +66,14 @@ export class HeaderComponent implements OnInit  {
 
   forwardSession(): void {
     this.forwards.forwardSession(this.activatedRoute);
+  }
+
+  forwardContacts(): void {
+    this.forwards.forwardContacts(this.activatedRoute);
+  }
+
+  forwardNews(): void {
+    this.forwards.forwardNews(this.activatedRoute);
   }
 
 }

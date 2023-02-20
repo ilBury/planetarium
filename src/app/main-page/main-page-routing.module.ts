@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 import { ViewComponent } from './components/view/view.component';
 import { SessionsComponent } from './components/sessions/sessions.component';
 import { BookingPageComponent } from './components/booking-page/booking-page.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
+import { NewsComponent } from './components/news/news.component';
+import { AuthGuard } from '../shared/services/auth-guard.service';
 
 
 const routes: Routes = [
@@ -18,11 +21,23 @@ const routes: Routes = [
  {
   path: 'sessions',
   component: SessionsComponent,
-
+ },
+ {
+  path: 'sessions/booking',
+  component: BookingPageComponent
  },
  {
   path: 'booking',
   component: BookingPageComponent,
+ },
+ {
+  path: 'aboutUs',
+  component: AboutUsComponent
+ },
+ {
+  path: 'news',
+  component: NewsComponent/* ,
+  canActivate: [AuthGuard] */
  }
 ];
 

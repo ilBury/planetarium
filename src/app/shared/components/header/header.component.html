@@ -8,8 +8,8 @@
 
     <div class="header-navigation" >
       <a id="first" (click)="forwardSession()"  (click)="changeProgress($event)" >Сеансы</a>
-      <a (click)="changeProgress($event)">О нас</a>
-      <a (click)="changeProgress($event)">Новости</a>
+      <a (click)="forwardContacts()" (click)="changeProgress($event)">О нас</a>
+      <a (click)="forwardNews()" (click)="changeProgress($event)">Новости</a>
       <a id="last" (click)="changeProgress($event)">Учебный центр</a>
     </div>
   </div>
@@ -20,7 +20,7 @@
 
     <button *ngIf="userRoles === roleUsers.NONAME; else flagLogin" (click)="login()">Вход</button>
     <ng-template #flagLogin>
-      <button  >Кабинет</button>
+      <button (click)="personal()" >Кабинет</button>
     </ng-template>
 
   </div>

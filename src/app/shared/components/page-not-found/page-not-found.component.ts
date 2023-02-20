@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ForwardsService } from '../../services/forwards.service';
 
 @Component({
   selector: 'app-page-not-found',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class PageNotFoundComponent {
 
+  constructor(private forward: ForwardsService) {}
+
+  home(): void {
+    this.forward.forwardView();
+  }
 }

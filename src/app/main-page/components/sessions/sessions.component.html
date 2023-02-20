@@ -7,7 +7,7 @@
     <mat-datepicker #picker></mat-datepicker>
 
   </mat-form-field> -->
-  <span>/ Сеансы</span>
+  <h3>/ Сеансы</h3>
   <div class="sessions-content">
     <div class="filter-sessions">
       <span>Дата</span>
@@ -46,15 +46,29 @@
         <mat-checkbox >9:00 — 10:00</mat-checkbox>
         <mat-checkbox >9:00 — 10:00</mat-checkbox>
       </div>
-      <div class="filter-sessions-format">
-        <span>Формат</span>
-        <mat-checkbox >Учебный центр</mat-checkbox>
-        <mat-checkbox >Кинозал</mat-checkbox>
 
-      </div>
     </div>
     <div class="choice-sessions">
-
+      <div class="rental-slides">
+        <div class="rental-slide">
+          <img src="assets/images/interstellarPict.png" alt="">
+          <h3>Интерстеллар</h3>
+          <span>Фантастика, драма, приключения</span>
+          <button (click)="booking()" mat-flat-button color="primary">Купить билет</button>
+        </div>
+        <div class="rental-slide">
+          <img src="assets/images/starWarsPict.png" alt="">
+          <h3>Интерстеллар</h3>
+          <span>Фантастика, драма, приключения</span>
+          <button mat-flat-button color="primary">Купить билет</button>
+        </div>
+        <div class="rental-slide">
+          <img src="assets/images/oblivionPict.png" alt="">
+          <h3>Интерстеллар</h3>
+          <span>Фантастика, драма, приключения</span>
+          <button mat-flat-button color="primary">Купить билет</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>

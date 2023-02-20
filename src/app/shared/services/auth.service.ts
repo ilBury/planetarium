@@ -9,21 +9,20 @@ import { RoleUsers } from '../types/role-users.enum';
 })
 export class AuthService {
 
-  public logBtn: boolean = false;
-  public title: string = 'Вход';
-  public currentRole: RoleUsers = RoleUsers.NONAME;
-  private _logTitle$: BehaviorSubject<RoleUsers> = new BehaviorSubject<RoleUsers>(RoleUsers.NONAME);
+  private _logTitle$: BehaviorSubject<RoleUsers> = new BehaviorSubject<RoleUsers>(localStorage.getItem('userEmail') ? RoleUsers.USER : RoleUsers.NONAME);
 
   get logTitle$() {
     return this._logTitle$.asObservable();
   }
 
-
   changeRoles() {
     this._logTitle$.next(RoleUsers.USER);
   }
 
-  constructor() {
+  constructor(
+    private router: Router
+  ) {
+
 
   }
 
@@ -33,32 +32,41 @@ export class AuthService {
   login(login: string, password: string): Promise<void> {
     const userToLogin = users.find(user => user.login === login && user.password === password);
     if(userToLogin) {
+      localStorage.setItem('userEmail', userToLogin.email );
       return Promise.resolve();
     }else {
       return Promise.reject();
     }
+
   }
 
   logout() {
-
+    this._logTitle$.next(RoleUsers.NONAME);
+    this.router.navigate(['planetarium', 'view']);
+    localStorage.removeItem('userEmail');
   }
 }
 
 
-const users = [
+
+
+export const users = [
  {
   login: 'Maloletka',
   password: '1234qwer!',
+  email: 'maloletka@gmail.com',
   role: RoleUsers.USER
  },
  {
   login: 'Katletka',
   password: '1234qwer!',
+  email: 'katletka@gmail.com',
   role: RoleUsers.USER
  },
  {
   login: 'Svetka',
   password: '1234qwer!',
+  email: 'svetka@gmail.com',
   role: RoleUsers.USER
  }
 ]

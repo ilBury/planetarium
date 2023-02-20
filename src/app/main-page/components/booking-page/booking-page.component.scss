@@ -1,0 +1,177 @@
+:host {
+  .wrapper {
+    width: 80%;
+    margin: 0 auto;
+    height: 125vh;
+    padding-bottom: 100px;
+    padding-top: 50px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    .leftside {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      img {
+        height: 450px;
+        width: 300px;
+        border-radius: 30px 0 0 0;
+      }
+
+      .leftside-description {
+
+        background-color: #131617;
+        height: 440px;
+        width: 260px;
+        border-radius: 0 0 0 30px;
+        padding: 10px 20px 0 20px;
+        .text {
+          padding-bottom: 5px;
+        }
+      }
+    }
+
+    .rightside {
+      width: 820px;
+      height: calc(100% - 80px);
+      background-color: #131617;
+      border-radius: 0 30px 30px 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 40px;
+      font-size: 14px;
+      .rightside-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        .title {
+          font-size: 22px;
+        }
+        .header-info {
+          display: flex;
+          flex-direction: row;
+          width: 200px;
+          justify-content: space-between;
+          .time {
+            display: flex;
+            align-items: center;
+            img {
+              padding-right: 10px;
+            }
+          }
+          .room {
+            width: 70px;
+            height: 25px;
+            background-color: #E7D795;
+            color: #000000;
+            border-radius: 10px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+          }
+        }
+      }
+      .rightside-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        height: 100%;
+        display: flex;
+        .rightside-date {
+          display: flex;
+          flex-direction: column;
+          width: 55%;
+          .title {
+            padding-bottom: 20px;
+          }
+          .rightside-time {
+            border-bottom: 1px solid #636363;
+            border-top: 1px solid #636363;
+            padding: 20px 15px 20px 15px;
+            display: flex;
+            justify-content: space-between;
+            span {
+              cursor: pointer;
+              padding: 5px 10px;
+              border-radius: 25px;
+            }
+            span:hover {
+              background-color: #6858DC;
+            }
+          }
+        }
+        .rightside-room {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          height: 550px;
+          width: 100%;
+          align-items: center;
+          span {
+            font-size: 18px;
+            letter-spacing: 5px;
+          }
+          .leftRight-seats {
+            height: 100%;
+            .booking-seats {
+              flex-direction: column;
+              height: 100%;
+              justify-content: space-between;
+              padding-right: 35px;
+              display: inline-flex;
+              img {
+                width: 20px ;
+                height: 20px ;
+              }
+            }
+          }
+        }
+
+
+
+      }
+
+      .rightside-footer {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+        .seats {
+          display: flex;
+          width: 350px;
+          justify-content: space-between;
+          .seat {
+            display: flex;
+
+            img {
+              rotate: -90deg;
+            }
+            span {
+              display: flex;
+              align-items: center;
+              padding-left: 10px;
+            }
+          }
+        }
+
+        .pay {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          width: 300px;
+          justify-content: space-between;
+          button {
+            border-radius: 15px;
+            width: 130px;
+            height: 35px;
+            background-color: #6858DC;
+          }
+        }
+      }
+
+    }
+  }
+}

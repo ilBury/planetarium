@@ -2,12 +2,46 @@
   .sessions {
     width: 80%;
     margin: 0 auto;
-
+    h3 {
+      color: #6858DC;
+    }
     .sessions-content {
-
+      display: flex;
+      flex-direction: row;
+      .choice-sessions {
+        .rental-slides {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-evenly;
+          height: 70vh;
+          padding-top: 50px;
+          padding-left: 0px;
+          .rental-slide {
+            width: 30%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            img {
+              width: 100%;
+            }
+            span {
+              margin-bottom: 15px;
+              font-size: 12px;
+            }
+            button {
+              width: 150px;
+              height: 30px;
+              border-radius: 5px;
+            }
+          }
+        }
+      }
       .filter-sessions {
         width: 30%;
-
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        padding-bottom: 35px;
         .filter-sessions-calendar {
           display: flex;
           flex-direction: row;
@@ -51,11 +85,11 @@
         .filter-sessions-time {
           display: flex;
           flex-direction: column;
+          span {
+            padding-bottom: 10px;
+          }
         }
-        .filter-sessions-format {
-          display: flex;
-          flex-direction: column;
-        }
+
       }
     }
   }
@@ -77,5 +111,6 @@
     padding-left: 0;
     left: 0;
   } */
+
 
 }

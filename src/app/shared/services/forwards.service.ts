@@ -20,4 +20,14 @@ export class ForwardsService {
     this.router.navigate(['planetarium']);
   }
 
+  forwardContacts(activatedRoute: ActivatedRoute) {
+    activatedRoute.parent ? this.router.navigate(['abousUs'], {relativeTo: activatedRoute.parent})
+    : this.router.navigate(['planetarium/aboutUs']);
+  }
+
+  forwardNews(activatedRoute: ActivatedRoute) {
+    activatedRoute.parent ? this.router.navigate(['news'], {relativeTo: activatedRoute.parent})
+    : this.router.navigate(['planetarium/news']);
+  }
+
 }

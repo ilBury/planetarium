@@ -17,7 +17,10 @@
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Пароль</mat-label>
-        <input matInput [formControl]="form.controls.password">
+        <input matInput [formControl]="form.controls.password" [type]="showPaswword ? 'text' : 'password'" visibility>
+        <mat-icon  matSuffix (click)="togglePasswordVisibility()" class="material-symbols-outlined">
+          {{showPaswword?'visibility_off':'visibility'}}
+        </mat-icon>
         <mat-error *ngIf="form.controls.password.hasError('required')">
           Password is <strong>required</strong>
         </mat-error>

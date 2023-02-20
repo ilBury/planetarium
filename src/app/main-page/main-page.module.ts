@@ -15,12 +15,16 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+import { AboutUsComponent } from './components/about-us/about-us.component';
+import { NewsComponent } from './components/news/news.component';
 
 @NgModule({
   declarations: [
     ViewComponent,
     BookingPageComponent,
-    SessionsComponent
+    SessionsComponent,
+    AboutUsComponent,
+    NewsComponent
   ],
   imports: [
     CommonModule,

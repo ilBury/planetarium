@@ -1,33 +1,60 @@
-<div class="registration-container">
+<div class="registration-container" *ngIf="stepRegistration === steps.writeData">
   <div class="wrapper">
     <h3>/ Регистрация</h3>
-    <form class="create-account-form">
+    <form class="create-account-form" [formGroup]="form">
       <mat-form-field appearance="fill">
         <mat-label>Логин</mat-label>
-        <input matInput >
+        <input matInput [formControl]="form.controls.login" >
+        <mat-error *ngIf="form.controls.login.hasError('required')">
+          Email is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="form.controls.login.hasError('maxlength')">
+          Password length must be less then 19 chars
+        </mat-error>
+        <mat-error *ngIf="form.controls.login.hasError('invalid')">
+          Password can include latin letters numbers
+        </mat-error>
+
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Почта</mat-label>
-        <input matInput >
+        <input matInput [formControl]="form.controls.email">
+        <mat-error *ngIf="form.controls.password.hasError('required')">
+          Password is <strong>required</strong>
+        </mat-error>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Пароль</mat-label>
-        <input matInput visibility>
+        <input matInput [type]="showPaswword ? 'text' : 'password'" [formControl]="form.controls.password" visibility >
+        <mat-icon  matSuffix (click)="togglePasswordVisibility()" class="material-symbols-outlined">
+          {{showPaswword?'visibility_off':'visibility'}}
+        </mat-icon>
+        <mat-error *ngIf="form.controls.password.hasError('required')">
+          Password is <strong>required</strong>
+        </mat-error>
+        <mat-error *ngIf="form.controls.password.hasError('minlength')">
+          Password length must be at list 8 chars
+        </mat-error>
+        <mat-error *ngIf="form.controls.password.hasError('invalid')">
+          Password must include latin letters, numbers and special chars
+        </mat-error>
       </mat-form-field>
     </form>
     <div class="btn-AndRegistr">
-      <button mat-flat-button color="primary">Далее</button>
-      <span>Уже есть аккаунт?<a> Войти</a></span>
+      <button mat-flat-button color="primary" (click)="next($event)">Далее</button>
+      <span>Уже есть аккаунт?<a (click)="login()"> Войти</a></span>
     </div>
     <img id="loginAndRegisterPicture" src="assets/images/loginAndRegisterPicture.png" alt="">
   </div>
 </div>
 
-<!-- <div class="choose-avatar-container">
+
+
+<div class="choose-avatar-container" *ngIf="stepRegistration === steps.choiceAvatar">
   <div class="wrapper">
     <h3>/ Регистрация</h3>
     <span>Выберите свой аватар:</span>
-    <div class="avatars">
+    <div class="avatars" (click)="choice($event)" >
       <img src="assets/images/avatar_1.png" alt="">
       <img src="assets/images/avatar_2.png" alt="">
       <img src="assets/images/avatar_3.png" alt="">
@@ -41,33 +68,32 @@
       <img src="assets/images/avatar_11.png" alt="">
     </div>
     <div class="btn-AndLogin">
-      <button mat-flat-button color="primary">Далее</button>
-      <span>Уже есть аккаунт?<a> Войти</a></span>
+      <button mat-flat-button color="primary" (click)="next($event)">Далее</button>
+      <span>Уже есть аккаунт?<a (click)="login()"> Войти</a></span>
     </div>
     <img id="chooseAvatarPicture" src="assets/images/LookingHuman.png" alt="">
   </div>
-</div> -->
+</div>
 
-<!-- <div class="choose-news-container">
+<div class="choose-news-container"  *ngIf="stepRegistration === steps.choiceNews">
   <div class="wrapper">
     <div class="wrapper-content">
       <h3>/ Регистрация</h3>
       <span>Какие новости о космосе вам интересны?</span>
-      <div class="news">
-        <mat-chip-listbox aria-label="Fish selection">
-          <mat-chip-option>Планеты</mat-chip-option>
-          <mat-chip-option>Мероприятия</mat-chip-option>
-          <mat-chip-option color="accent" selected>Для детей</mat-chip-option>
-          <mat-chip-option color="warn">Ракетостроение</mat-chip-option>
-        </mat-chip-listbox>
+      <div class="news" >
+        <ng-container *ngFor="let item of newsItems">
+          <mat-chip-listbox aria-label="Fish selection">
+            <mat-chip-option  (selectionChange)="news($event)">{{item.header}}</mat-chip-option>
+          </mat-chip-listbox>
+        </ng-container>
       </div>
     </div>
 
     <div class="btn-AndLogin">
-      <button mat-flat-button color="primary">Зарегистрироваться</button>
+      <button mat-flat-button color="primary" (click)="next($event)">Зарегистрироваться</button>
       <span>Уже есть аккаунт?<a (click)="login()"> Войти</a></span>
 
     </div>
     <img id="chooseNewsPicture" src="assets/images/waitingHuman.png" alt="">
   </div>
-</div> -->
+</div>

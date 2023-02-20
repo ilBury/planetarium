@@ -14,6 +14,7 @@ import { RoleUsers } from 'src/app/shared/types/role-users.enum';
 })
 export class LoginComponent  {
 
+  public showPaswword: boolean = false;
   public form = this.fb.group( {
     login: new FormControl<string>('', [
       Validators.required,
@@ -34,7 +35,9 @@ export class LoginComponent  {
     private router: Router
   ) {}
 
-
+  togglePasswordVisibility() {
+    this.showPaswword = !this.showPaswword;
+  }
 
   async login(): Promise<void> {
 

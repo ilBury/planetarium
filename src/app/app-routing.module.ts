@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';
+import { PersonalAreaComponent } from './components/personal-area/personal-area.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { ViewComponent } from './main-page/components/view/view.component';
-import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found/page-not-found.component';
+import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'registration',
     component: RegistrationComponent
+  },
+  {
+    path: 'personal',
+    component: PersonalAreaComponent
   },
   {
     path: '**',

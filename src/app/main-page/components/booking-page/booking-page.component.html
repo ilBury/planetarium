@@ -1,1 +1,88 @@
-<p>booking-page works!</p>
+<div class="wrapper">
+  <div class="leftside">
+    <img src="assets/images/interstellarPict.png" alt="">
+    <div class="leftside-description">
+      <div class="text">
+        <h4>Описание</h4>
+        <span>Когда засуха, пыльные бури и вымирание растений приводят человечество к продовольственному кризису, коллектив исследователей и учёных отправляется сквозь червоточину...</span>
+      </div>
+      <div class="text">
+        <h4>Режиссер</h4>
+        <span>Кристофер Нолан</span>
+      </div>
+      <div class="text">
+        <h4>Жанр</h4>
+        <span>фантастика, драма, приключения</span>
+      </div>
+      <div class="text">
+        <h4>Страна</h4>
+        <span>США, Великобритания, Канада</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="rightside">
+    <div class="rightside-header">
+      <span class="title">Интерстеллар</span>
+      <div class="header-info">
+        <div class="time">
+          <img src="assets/images/clock.png" alt="">
+          <span>169 мин.</span>
+        </div>
+        <div class="room">
+          <span>зал 1</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="rightside-content">
+
+      <div class="rightside-date">
+        <span class="title">Дата</span>
+        <div class="rightside-time">
+          <span>time</span>
+          <span>time</span>
+          <span>time</span>
+          <span>time</span>
+          <span>time</span>
+        </div>
+      </div>
+      <div class="rightside-room">
+        <div class="leftRight-seats">
+          <div class="booking-seats"></div>
+          <div class="booking-seats" ></div>
+          <div class="booking-seats"></div>
+        </div>
+        <span>ЭКРАН</span>
+        <div class="leftRight-seats">
+          <div class="booking-seats" [ngStyle]="{'rotate': '180deg'}"></div>
+          <div class="booking-seats" [ngStyle]="{'rotate': '180deg'}"></div>
+          <div class="booking-seats" [ngStyle]="{'rotate': '180deg'}" ></div>
+        </div>
+      </div>
+
+
+
+    </div>
+    <div class="rightside-footer">
+      <div class="seats">
+        <div class="seat">
+          <img  src="assets/images/SeatSelected.png" alt="">
+          <span>Выбрано</span>
+        </div>
+        <div class="seat">
+          <img src="assets/images/Seat.png" alt="">
+          <span>Свободно</span>
+        </div>
+        <div class="seat">
+          <img src="assets/images/SeatBusy.png" alt="">
+          <span>Занято</span>
+        </div>
+      </div>
+      <div class="pay">
+        <span>Итого: 30 BYN</span>
+        <button mat-flat-button color="primary" >К оплате</button>
+      </div>
+    </div>
+  </div>
+</div>
