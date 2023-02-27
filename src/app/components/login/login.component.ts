@@ -3,7 +3,7 @@ import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Router } from '@angular/router';
 import { HeaderComponent } from 'src/app/shared/components/header/header.component';
-import { AuthService } from 'src/app/shared/services/auth.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { ValidationService } from 'src/app/shared/services/validation.service';
 import { RoleUsers } from 'src/app/shared/types/role-users.enum';
 

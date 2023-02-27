@@ -1,6 +1,6 @@
 <div class="wrapper">
   <div class="leftside">
-    <img src="assets/images/interstellarPict.png" alt="">
+    <img src="{{selectedSession.picture}}" alt="">
     <div class="leftside-description">
       <div class="text">
         <h4>Описание</h4>
@@ -12,7 +12,7 @@
       </div>
       <div class="text">
         <h4>Жанр</h4>
-        <span>фантастика, драма, приключения</span>
+        <span>{{selectedSession.discription}}</span>
       </div>
       <div class="text">
         <h4>Страна</h4>
@@ -23,7 +23,7 @@
 
   <div class="rightside">
     <div class="rightside-header">
-      <span class="title">Интерстеллар</span>
+      <span class="title">{{selectedSession.name}}</span>
       <div class="header-info">
         <div class="time">
           <img src="assets/images/clock.png" alt="">
@@ -38,13 +38,23 @@
     <div class="rightside-content">
 
       <div class="rightside-date">
-        <span class="title">Дата</span>
+        <span class="title">{{day[allDate[0].item.getDay()]}}, {{allDate[0].item.toLocaleDateString('ru',{day: 'numeric'})}} {{month[allDate[0].item.getMonth()]}}</span>
         <div class="rightside-time">
-          <span>time</span>
-          <span>time</span>
-          <span>time</span>
-          <span>time</span>
-          <span>time</span>
+
+          <div  *ngFor="let time of allDate">
+            <span class="active" *ngIf="time.item.toLocaleTimeString('ru', {hour: 'numeric', minute:'2-digit'}) === currentHour;else disable" (click)="chooseHour($event)"  >
+              {{time.item.toLocaleTimeString([], {hour: 'numeric' , minute: '2-digit'})}}
+            </span>
+            <ng-template #disable>
+              <span class="disable" (click)="chooseHour($event)" >
+                {{time.item.toLocaleTimeString([], {hour: 'numeric' , minute: '2-digit'})}}
+              </span>
+            </ng-template>
+          </div>
+
+
+
+
         </div>
       </div>
       <div class="rightside-room">
@@ -80,9 +90,44 @@
         </div>
       </div>
       <div class="pay">
-        <span>Итого: 30 BYN</span>
-        <button mat-flat-button color="primary" >К оплате</button>
+        <span>Итого: {{selectedSession.price}} BYN</span>
+        <button mat-flat-button color="primary" (click)="bookingTicket()" >К оплате</button>
       </div>
     </div>
   </div>
+
+  <div class="pay-ticket" *ngIf="isPay">
+    <div class="wrapper">
+      <h3>/ Оплата</h3>
+      <div class="content">
+        <img src="{{selectedSession.picture}}" alt="">
+        <div class="content-text">
+          <span class="title">{{selectedSession.name}}</span>
+          <span class="text">{{selectedSession.discription}}</span>
+          <span class="date">{{day[allDate[0].item.getDay()]}}, {{allDate[0].item.getDay()}} {{month[allDate[0].item.getMonth()]}}</span>
+        </div>
+      </div>
+      <div class="add-info">
+        <span class="add-info-number">Номер заказа: ???</span>
+        <div class="price">
+          <span>{{countSeats}} БИЛЕТА</span>
+          <span>{{selectedSession.price*countSeats}} BYN</span>
+        </div>
+      </div>
+      <form class="create-account-form" >
+        <mat-form-field appearance="fill">
+          <mat-label>Введите вашу почту</mat-label>
+          <input matInput  visibility>
+        </mat-form-field>
+      </form>
+      <div class="btn">
+        <button type="submit" mat-flat-button color="primary" (click)="buyTicket()" >Оформить билет</button>
+      </div>
+      <div class="exit">
+        <button><img src="assets/images/exit.png" alt=""></button>
+      </div>
+    </div>
+  </div>
+
+
 </div>

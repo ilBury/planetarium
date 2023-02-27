@@ -2,7 +2,10 @@ import { ObserversModule } from '@angular/cdk/observers';
 import { Injectable } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { Observable, filter, BehaviorSubject } from 'rxjs';
-import { RoleUsers } from '../types/role-users.enum';
+
+import { RoleUsers } from '../shared/types/role-users.enum';
+import { users } from '../types/mocData';
+
 
 @Injectable({
   providedIn: 'root'
@@ -17,6 +20,7 @@ export class AuthService {
 
   changeRoles() {
     this._logTitle$.next(RoleUsers.USER);
+
   }
 
   constructor(
@@ -49,7 +53,7 @@ export class AuthService {
 
 
 
-
+/*
 export const users = [
  {
   login: 'Maloletka',
@@ -69,4 +73,4 @@ export const users = [
   email: 'svetka@gmail.com',
   role: RoleUsers.USER
  }
-]
+] */

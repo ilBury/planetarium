@@ -15,7 +15,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import { RegistrationComponent } from './components/registration/registration.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { CommonModule } from '@angular/common';
-import { AuthService } from './shared/services/auth.service';
+import { AuthService } from './services/auth.service';
 import {MatChipsModule} from '@angular/material/chips';
 import { PersonalAreaComponent } from './components/personal-area/personal-area.component';
 import { MatIconModule } from '@angular/material/icon';

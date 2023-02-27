@@ -1,7 +1,7 @@
 import { Component, Input, DoCheck, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { find, Observable, Subscription } from 'rxjs';
-import { AuthService, users } from '../../services/auth.service';
+import { AuthService, } from '../../../services/auth.service';
 import { ChangeProgressService } from '../../services/change-progress.service';
 import { ForwardsService } from '../../services/forwards.service';
 import { RoleUsers } from '../../types/role-users.enum';

@@ -8,19 +8,29 @@
     .sessions-content {
       display: flex;
       flex-direction: row;
+      padding-top: 15px;
       .choice-sessions {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        width: 70%;
         .rental-slides {
           display: flex;
           flex-direction: row;
-          justify-content: space-evenly;
-          height: 70vh;
-          padding-top: 50px;
-          padding-left: 0px;
+          flex-wrap: wrap;
+          gap: 15px;
+          padding: 50px 0 50px 15px;
           .rental-slide {
-            width: 30%;
+            width: 250px;
             display: flex;
             flex-direction: column;
             align-items: center;
+            padding-bottom: 20px;
+            .title {
+              padding-top: 15px;
+              font-size: 16px;
+              font-weight: bold;
+            }
             img {
               width: 100%;
             }
@@ -40,7 +50,7 @@
         width: 30%;
         display: flex;
         flex-direction: column;
-        justify-content: space-evenly;
+        gap: 20px;
         padding-bottom: 35px;
         .filter-sessions-calendar {
           display: flex;
@@ -62,9 +72,12 @@
               padding: 10px 0 0 0;
               margin: 0;
             }
+            .active {
+              background-color: #6858DC;
+              border-radius: 25px;
+            }
             .number {
               font-size: 12px;
-
               cursor: pointer;
             }
             .number > li {
@@ -80,11 +93,16 @@
             height: 8px;
             width: 15px;
             padding: 0 10px 5px 0;
+            cursor: pointer;
           }
         }
         .filter-sessions-time {
           display: flex;
           flex-direction: column;
+          form {
+            display: flex;
+            flex-direction: column;
+          }
           span {
             padding-bottom: 10px;
           }
@@ -111,6 +129,9 @@
     padding-left: 0;
     left: 0;
   } */
+  .demo-inline-calendar-card {
+    width: 250px;
+  }
 
 
 }

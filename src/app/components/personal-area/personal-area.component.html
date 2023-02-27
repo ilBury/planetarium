@@ -3,9 +3,9 @@
   <div class="wrapper-view">
     <div class="text">
       <h3>Добро пожаловать, {{user}} !</h3>
-      <p>Текущая скидка — <span>10%</span></p>
+      <p>Текущая скидка — <span>{{discount}}%</span></p>
     </div>
-    <img src="assets/images/personalPicture.png" alt="">
+    <img src={{avatarBody}} alt="">
     <div class="btn">
       <button mat-flat-button color="primary" (click)="logout()" >Выйти</button>
     </div>

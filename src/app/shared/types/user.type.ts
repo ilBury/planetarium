@@ -7,6 +7,7 @@ export interface User {
   email: string,
   role: RoleUsers,
   avatar: string,
+  avatarBody: string,
   interested: News[],
   discount: number
 }

@@ -170,29 +170,18 @@
       flex-direction: row;
       justify-content: space-between;
       padding-bottom: 40px;
-      .new {
-        width: 23%;
-        display: flex;
-        flex-direction: column;
-        .new-tags {
-          color: #E7D795;
-          padding: 10px 0;
-          font-size: 12px;
-          img {
-          padding-right: 5px;
-          }
-        }
-        span {
-          width: 80%;
-        }
-      }
-
     }
 
     .more-news {
       display: flex;
       justify-content: end;
       color: #6858DC;
+      a {
+        cursor: pointer;
+      }
+      a:hover {
+        border-bottom: 1px solid #6858DC;
+      }
     }
   }
 

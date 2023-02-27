@@ -1,8 +1,10 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
+
 import { ValidationService } from 'src/app/shared/services/validation.service';
-import { news } from 'src/app/shared/types/mocData';
+import { news, users } from 'src/app/types/mocData';
 import { News } from 'src/app/shared/types/news.type';
 import { RoleUsers } from 'src/app/shared/types/role-users.enum';
 import { User } from 'src/app/shared/types/user.type';
@@ -18,7 +20,6 @@ export class RegistrationComponent    {
 
   public showPaswword: boolean = false;
   public newsItems: News[] = news;
-  public a: string[] = [];
   public form = this.fb.group( {
     login: new FormControl<string>('', [
       Validators.required,
@@ -43,7 +44,7 @@ export class RegistrationComponent    {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    /* private authService: AuthService */
+    private authService: AuthService
   ) {
 
   }
@@ -52,6 +53,7 @@ export class RegistrationComponent    {
   choice(event: any): void {
     if(event.target.src) {
       this.tempUser!.avatar = String(event.target.src.match(/assets\/images\/[a-zA-Z0-9_]{1,}.png/)?.[0]);
+      this.tempUser!.avatarBody =  this.tempUser!.avatar.replace(/_/g, '');
     }
   }
   news(event: any): void {
@@ -60,7 +62,7 @@ export class RegistrationComponent    {
       this.tempUser!.interested.push(event.source.value);
     }else {
       let index =  this.tempUser!.interested.findIndex(el => el === event.source.value);
-      this.a.splice(index, 1);
+      this.tempUser!.interested.splice(index, 1);
     }
   }
 
@@ -76,25 +78,26 @@ export class RegistrationComponent    {
   next(event: any): void {
     if(this.form.valid) {
       if(this.stepRegistration === StepRegistration.writeData) {
-
         this.tempUser = {login: this.form.value.login!,
           password: this.form.value.password!,
           email: this.form.value.email!,
           role: RoleUsers.USER,
           avatar: '',
+          avatarBody: '',
           interested: [],
           discount: 0}
           this.stepRegistration = StepRegistration.choiceAvatar;
       } else if(this.stepRegistration === StepRegistration.choiceAvatar) {
         if(this.tempUser!.avatar != '') {
           this.stepRegistration = StepRegistration.choiceNews;
-
         }
       }else {
         this.stepRegistration = StepRegistration.writeData;
         this.router.navigate(['planetarium']);
-
-        console.log(this.tempUser);
+        this.authService.changeRoles();
+        users.push(this.tempUser!);
+        localStorage.setItem('userEmail',this.tempUser!.email);
+        console.log(users);
       }
     }
   }

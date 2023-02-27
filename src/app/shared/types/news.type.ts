@@ -1,5 +1,5 @@
 export interface News {
   header: string,
-  picture?: string,
-  content?: string
+  picture?: string[],
+  content?: string[]
 }

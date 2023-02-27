@@ -1,4 +1,5 @@
 :host {
+
   .wrapper {
     width: 80%;
     margin: 0 auto;
@@ -8,6 +9,8 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    position: relative;
+
     .leftside {
       height: 100%;
       display: flex;
@@ -83,7 +86,7 @@
         .rightside-date {
           display: flex;
           flex-direction: column;
-          width: 55%;
+          width: 100%;
           .title {
             padding-bottom: 20px;
           }
@@ -92,14 +95,19 @@
             border-top: 1px solid #636363;
             padding: 20px 15px 20px 15px;
             display: flex;
-            justify-content: space-between;
-            span {
+            justify-content: space-evenly;
+            .disable {
               cursor: pointer;
               padding: 5px 10px;
               border-radius: 25px;
             }
-            span:hover {
+            .disable:hover {
               background-color: #6858DC;
+            }
+            .active {
+              background-color: #6858DC;
+              padding: 5px 10px;
+              border-radius: 25px;
             }
           }
         }
@@ -122,9 +130,11 @@
               justify-content: space-between;
               padding-right: 35px;
               display: inline-flex;
+
               img {
                 width: 20px ;
                 height: 20px ;
+
               }
             }
           }
@@ -173,5 +183,145 @@
       }
 
     }
+    .pay-ticket {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      left: 30%;
+      top: 25%;
+      .wrapper {
+        width: 350px;
+        height: 450px;
+        background-color: #000000;
+        border-radius: 20px;
+        padding: 20px 65px 20px 65px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        margin: 20px 0 150px 0;
+        position: relative;
+        .exit {
+          position: absolute;
+          top: 10px;
+          right: 10px;
+
+          button {
+            padding: 0;
+            background-color: #000000;
+            cursor: pointer;
+          }
+        }
+        h3 {
+          color: #6858DC;
+        }
+        .content {
+          display: flex;
+          flex-direction: row;
+          img {
+            width: 125px;
+            height: 180px;
+            border-radius: 10px;
+          }
+          .content-text {
+            display: flex;
+            flex-direction: column;
+
+            padding-left: 30px;
+            span {
+              padding-bottom: 10px;
+            }
+            .title {
+              color: #E7D795;
+              font-size: 18px;
+              font-weight: bold;
+            }
+            .text {
+              opacity: 0.6;
+            }
+            .date {
+              padding-top: 20px;
+              font-size: 14px;
+              font-weight: bold;
+            }
+          }
+        }
+        .add-info {
+          display: flex;
+          flex-direction: column;
+          font-size: 12px;
+          .price {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+          }
+          .add-info-number {
+            padding: 30px 0;
+            color: #9E9E9E;
+
+          }
+        }
+        .create-account-form {
+          display: flex;
+          flex-direction: column;
+          justify-content: start;
+          color: #FFFFFF;
+          input {
+            color: #FFFFFF;
+          }
+        }
+        .btn {
+          display: flex;
+          flex-direction: column;
+          color: #9E9E9E;
+          button {
+            height: 40px;
+            color: #000000;
+            background-color: #6858DC;
+            font-weight: 600;
+            margin-bottom: 15px;
+          }
+
+
+        }
+
+      }
+    }
+
   }
+  ::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+    background-color: #000000;
+  }
+  ::ng-deep .mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label {
+    color: #9E9E9E;
+    font-size: 14px;
+  }
+  ::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::before {
+    border-bottom-color: #9E9E9E;
+
+  }
+  ::ng-deep .mdc-text-field--filled .mdc-line-ripple::after {
+    border-bottom-color: #6858DC;
+  }
+  ::ng-deep .mat-mdc-form-field-error {
+    color: var(--mdc-theme-error, #82ED2E);
+  }
+  .material-symbols-outlined {
+    cursor: pointer;
+    color:#9E9E9E;
+  }
+  input:-webkit-autofill,
+  input:-webkit-autofill:hover,
+  input:-webkit-autofill:focus,
+  textarea:-webkit-autofill,
+  textarea:-webkit-autofill:hover,
+  textarea:-webkit-autofill:focus,
+  select:-webkit-autofill,
+  select:-webkit-autofill:hover,
+  select:-webkit-autofill:focus {
+  -webkit-text-fill-color: #FFFFFF;
+  -webkit-box-shadow: 0 0 0px 1000px #000000 inset;
+  transition: background-color 5000s ease-in-out 0s;
+  }
+
 }
