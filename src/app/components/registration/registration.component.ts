@@ -8,6 +8,7 @@ import { news, users } from 'src/app/types/mocData';
 import { News } from 'src/app/shared/types/news.type';
 import { RoleUsers } from 'src/app/shared/types/role-users.enum';
 import { User } from 'src/app/shared/types/user.type';
+import { userAvatars } from 'src/app/config/user.config';
 
 @Component({
   selector: 'app-registration',
@@ -38,6 +39,9 @@ export class RegistrationComponent    {
   public get steps(): typeof StepRegistration {
     return StepRegistration;
   }
+  public userAvatars = userAvatars;
+  public activeAvatarIndex = 0;
+
   private tempUser?: User;
   private isSelected: boolean = false;
 
@@ -52,7 +56,13 @@ export class RegistrationComponent    {
 
   choice(event: any): void {
     if(event.target.src) {
-      this.tempUser!.avatar = String(event.target.src.match(/assets\/images\/[a-zA-Z0-9_]{1,}.png/)?.[0]);
+      const avatarImageName = String(event.target.src.match(/[a-zA-Z0-9_]{1,}.png/)?.[0]);
+      const imageSrc = 'assets/images/' + avatarImageName;
+      this.tempUser!.avatar = imageSrc;
+
+      const avatarIndex = userAvatars.indexOf(avatarImageName)
+      this.activeAvatarIndex = avatarIndex !== -1 ? avatarIndex : 0;
+      
       this.tempUser!.avatarBody =  this.tempUser!.avatar.replace(/_/g, '');
     }
   }
@@ -112,3 +122,4 @@ enum StepRegistration {
   choiceAvatar,
   choiceNews
 }
+

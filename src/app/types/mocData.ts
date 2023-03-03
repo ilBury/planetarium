@@ -41,9 +41,9 @@ export const news: News[] = [
 
 export let users: User[] = [
   {
-    login: 'Maloletka',
+    login: 'Marina',
     password: '1234qwer!',
-    email: 'maloletka@gmail.com',
+    email: 'Marina@gmail.com',
     role: RoleUsers.USER,
     discount: 0,
     interested: [news[2], news[1]],
