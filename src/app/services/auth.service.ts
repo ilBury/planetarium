@@ -56,9 +56,9 @@ export class AuthService {
 /*
 export const users = [
  {
-  login: 'Maloletka',
+  login: 'marina',
   password: '1234qwer!',
-  email: 'maloletka@gmail.com',
+  email: 'marina@gmail.com',
   role: RoleUsers.USER
  },
  {
