@@ -1,0 +1,35 @@
+<div class="wrapper">
+  <div class="info">
+    <button id="exit" (click)="forwardGames()">
+      <img src="assets/images/log-out.png" alt="#">
+    </button>
+    <div class="content">
+      <h3>Игра: Учим Планеты</h3>
+      <span>Как играть?</span>
+      <p>Эта игра, где вам небходимо по картинке, определить, что это за планета и перетащить блок с названием в пустой блок под ней. Если вы ошибетесь, придется начинаться с самого начала.</p>
+    </div>
+  </div>
+
+  <div class="game">
+    <div class="planets">
+      <div class="planet" *ngFor="let item of namePlanets">
+        <img
+        *ngIf="item.name === saturn;else elseBlock"
+
+        [ngClass]="{'saturn': true}"
+        src="assets/images/{{item.img}}Learn.png" alt="">
+        <ng-template #elseBlock>
+          <img  src="assets/images/{{item.img}}Learn.png" alt="">
+        </ng-template>
+        <button [ngClass]="{'btnHidden': true}" mat-raised-button color="primary">{{item.name}}</button>
+      </div>
+    </div>
+
+    <div class="names">
+      <button *ngFor="let item of numberNames" [ngClass]="{'btnHidden': false}" [disabled]="true" mat-raised-button color="primary">
+        {{item}}
+      </button>
+    </div>
+  </div>
+
+</div>

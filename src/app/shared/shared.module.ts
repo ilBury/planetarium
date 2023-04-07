@@ -5,7 +5,8 @@ import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { FooterComponent } from "./components/footer/footer.component";
 import { HeaderComponent } from "./components/header/header.component";
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-
+import {MatMenuModule} from '@angular/material/menu';
+import { MatIconModule } from "@angular/material/icon";
 
 
 @NgModule({
@@ -17,7 +18,9 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
   imports: [
     CommonModule,
     MatProgressBarModule,
-    FormsModule
+    FormsModule,
+    MatMenuModule,
+    MatIconModule
   ],
   exports: [HeaderComponent, FooterComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

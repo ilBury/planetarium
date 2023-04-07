@@ -8,6 +8,7 @@ import { NewsComponent } from './components/news/news.component';
 import { AuthGuard } from '../shared/services/auth-guard.service';
 
 
+
 const routes: Routes = [
  {
   path: '',
@@ -36,8 +37,11 @@ const routes: Routes = [
  },
  {
   path: 'news',
-  component: NewsComponent/* ,
-  canActivate: [AuthGuard] */
+  component: NewsComponent
+ },
+ {
+  path: 'games',
+  loadChildren: () => import('./games/games.module').then(m => m.GamesModule)
  }
 ];
 

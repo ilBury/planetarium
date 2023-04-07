@@ -95,3 +95,9 @@
 
   }
 }
+@media(max-width: 1000px) {
+  .wrapper-img > img {
+    display: none !important;
+  }
+
+}

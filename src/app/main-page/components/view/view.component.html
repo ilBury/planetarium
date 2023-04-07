@@ -91,50 +91,20 @@
     <div class="questions-content">
       <div class="questions-content-accordion">
         <mat-accordion>
-          <mat-expansion-panel >
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                Возможно ли посещение с маленькими детьми?
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-            <p>Сеансы в Планетарии имеют разный рекомендуемый возраст, в зависимости от содержания программы. Посещение сеансов с детьми до 3 лет, а также людям со слабым вестибулярным аппаратом не рекомендовано, поскольку сеанс проводится в полной темноте, с высоким эффектом присутствия, что может вызвать дискомфорт. За возможные последствия администрация ответственности не несет. Если ребенок заплачет, администрация имеет право попросить вас покинуть зал, чтобы не мешать другим посетителям. Деньги за оплаченные услуги в данном случае зрителю не возмещаются.</p>
-          </mat-expansion-panel>
-          <mat-expansion-panel >
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                Self aware panel
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-            <p>I'm visible because I am open</p>
-          </mat-expansion-panel>
-          <mat-expansion-panel >
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                Self aware panel
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-            <p>I'm visible because I am open</p>
-          </mat-expansion-panel>
-          <mat-expansion-panel >
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                Self aware panel
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-            <p>I'm visible because I am open</p>
-          </mat-expansion-panel>
-          <mat-expansion-panel >
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                Self aware panel
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-            <p>I'm visible because I am open</p>
-          </mat-expansion-panel>
+          <ng-container *ngFor="let item of questionsView">
+            <mat-expansion-panel >
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{item.ask}}
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <p>{{item.content}}</p>
+            </mat-expansion-panel>
+          </ng-container>
         </mat-accordion>
-
       </div>
-      <img class="nearAccordion" src="assets/images/nearAccordion.png" alt="">
+      <div class="nearAccordion"><img  src="assets/images/nearAccordion.png" alt=""></div>
+
     </div>
   </div>
 </section>

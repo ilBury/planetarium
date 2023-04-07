@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { ForwardsService } from 'src/app/shared/services/forwards.service';
 import { News } from 'src/app/shared/types/news.type';
-import { news } from 'src/app/types/mocData';
+import { news, Questions, questions } from 'src/app/types/mocData';
 
 @Component({
   selector: 'app-view',
@@ -14,6 +14,7 @@ import { news } from 'src/app/types/mocData';
 export class ViewComponent implements AfterViewInit {
 
   @Input() viewNews: News[] = news;
+  public questionsView: Questions[] = questions;
 
   constructor(
     private forwards: ForwardsService,

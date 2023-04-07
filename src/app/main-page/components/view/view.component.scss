@@ -1,4 +1,3 @@
-
 :host {
 
   section {
@@ -10,13 +9,13 @@
     justify-content: center;
     width: 80%;
     margin: 0 auto;
-    height: 100vh;/*
-    font-family: "ttTravel"; */
+    padding-bottom: 75px;
     .rightside {
+      text-align: center;
+      width: 50%;
       img {
         z-index: 10;
-        max-width: 600px;
-        max-height: 600px;
+        width: 100%;
       }
     }
 
@@ -24,6 +23,7 @@
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
+      width: 50%;
       h3 {
       font-size: 90px;
       margin: 0;
@@ -64,7 +64,7 @@
       flex-direction: row;
       justify-content: space-between;
       margin-top: 100px;
-      height: 70vh;
+      height: 550px;
       .info-card {
         width: 32%;
         height: 80%;
@@ -104,6 +104,9 @@
         display: flex;
         justify-content: start;
 
+        img {
+          width: 100%;
+        }
         span {
           position: absolute;
           top: 65%;
@@ -116,11 +119,14 @@
   }
 
   .rental-wrapper {
-
+    height: 600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    padding-bottom: 100px;
     .rental-wrapper-title {
-      padding-bottom: 60px;
+      padding-bottom: 50px;
     }
-
     .rental-more {
       display: flex;
       justify-content: end;
@@ -138,12 +144,14 @@
       display: flex;
       flex-direction: row;
       justify-content: space-between;
+      padding-top: 10px;
       height: 70vh;
       .rental-slide {
         width: 20%;
         display: flex;
         flex-direction: column;
         align-items: center;
+        text-align: center;
         img {
           width: 100%;
         }
@@ -161,6 +169,7 @@
   }
 
   .news-wrapper {
+
     .news-wrapper-title {
       padding-bottom: 60px;
     }
@@ -186,6 +195,10 @@
   }
 
   .questions-wrapper {
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
     .questions-wrapper-title {
       margin: 40px 0;
     }
@@ -193,15 +206,20 @@
     .questions-content {
       display: flex;
       margin-bottom: 50px;
+
       .nearAccordion {
         width: 50%;
         padding-left: 50px;
-        max-height: 500px;
+        height: 500px;
+        img {
+
+          width: 100%;
+        }
       }
       .questions-content-accordion {
         display: flex;
         justify-content: flex-start;
-
+        width: 50%;
 
         mat-expansion-panel {
           background-color: #1F232E;
@@ -228,7 +246,7 @@
   }
 
   .wrapper-customQuestion {
-    height: 55vh;
+    height: 400px;
     background-color: #E7D795;
     border-radius: 80px 80px 0 0;
     display: flex;
@@ -255,5 +273,76 @@
 
   button {
     background-color: #6858DC;
+  }
+}
+
+@media (max-width: 1200px) {
+  .leftside {
+
+    h3 {
+      font-size: 50px !important;
+    }
+  }
+  .rental-wrapper {
+    height: 550px !important;
+    padding-bottom: 50px !important;
+  }
+}
+
+@media (max-width: 1250px) {
+  .nearAccordion {
+    max-width: 400px !important;
+    width: 30% !important;
+  }
+  .questions-content-accordion {
+    width: 70% !important;
+  }
+}
+@media (max-width: 800px) {
+  .nearAccordion {
+    display: none;
+  }
+  .questions-content-accordion {
+    width: 100% !important;
+  }
+}
+@media (max-width: 1000px) {
+  .info-cards {
+    height: 300px !important;
+  }
+  #RunningHuman {
+
+    height: 200px;
+  }
+}
+@media (max-width: 900px) {
+  .customQuestion-content {
+    width: 40% !important;
+  }
+}
+@media (max-width: 721px) {
+  .rightside {
+
+    img {
+      display: none !important;
+    }
+  }
+
+  .info-wrapper {
+    display: none !important;
+  }
+
+  .rental-wrapper {
+    padding-top: 20px !important;
+  }
+
+  .rental-slide {
+
+    button {
+      width: 120px !important;
+      height: 20px !important;
+      font-size: 10px;
+
+    }
   }
 }

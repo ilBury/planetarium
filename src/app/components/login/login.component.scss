@@ -88,3 +88,20 @@
   transition: background-color 5000s ease-in-out 0s;
   }
 }
+
+@media (max-width: 1000px) {
+  #loginAndRegisterPicture {
+    display: none !important;
+  }
+  .wrapper {
+    width: 300px !important;
+    padding: 0 40px 0 40px !important;
+  }
+}
+@media (max-width: 1200px) {
+  #loginAndRegisterPicture {
+    width: 250px !important;
+    height: 400px !important;
+    right: -200px !important;
+  }
+}

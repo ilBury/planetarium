@@ -19,6 +19,7 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
 import { NewsComponent } from './components/news/news.component';
 import {MatMenuModule} from '@angular/material/menu';
 
+
 @NgModule({
   declarations: [
     ViewComponent,
@@ -43,9 +44,7 @@ import {MatMenuModule} from '@angular/material/menu';
     MatDatepickerModule,
     MatNativeDateModule,
     MatMenuModule
-  ],
-  exports: [
-    MatButtonModule
   ]
+
 })
 export class MainPageModule { }

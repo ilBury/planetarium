@@ -76,4 +76,8 @@ export class HeaderComponent implements OnInit  {
     this.forwards.forwardNews(this.activatedRoute);
   }
 
+  forwardGames(): void {
+    this.forwards.forwardGames(this.activatedRoute)
+  }
+
 }

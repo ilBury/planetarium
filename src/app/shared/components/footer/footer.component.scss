@@ -1,4 +1,5 @@
 :host {
+
   footer {
     background-color: #171921;
     color: #fff;
@@ -56,9 +57,10 @@
   }
 
 
+}
+@media (max-width:1000px) {
 
-
-
-
-
+  .wrapperContent {
+    width: 100% !important;
+  }
 }

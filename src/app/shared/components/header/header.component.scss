@@ -15,6 +15,10 @@
     padding: 20px 20px 40px 20px;
   }
 
+  .burger {
+    display: none;
+  }
+
   mat-progress-bar {
     width: 100%;
     z-index: 5;
@@ -127,6 +131,22 @@
 
   ::ng-deep .mat-mdc-progress-bar {
     --mdc-linear-progress-active-indicator-color: #6858DC;
-}
+  }
 
+}
+@media (max-width:1000px) {
+
+  .burger {
+    display: block !important;
+  }
+  .header-progress-navigation, .logIn {
+    display: none !important;
+  }
+   button {
+    background-color: rgba(28,28,28,0);
+    border: 0;
+  }
+  .logo {
+    padding-left: 0 !important;
+  }
 }
