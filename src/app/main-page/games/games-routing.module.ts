@@ -5,6 +5,7 @@ import { SolarSystemComponent } from './components/solar-system/solar-system.com
 import { BarleyBreakComponent } from './components/barley-break/barley-break.component';
 import { CardMemoryComponent } from './components/card-memory/card-memory.component';
 import { LearningPlanetsComponent } from './components/learning-planets/learning-planets.component';
+import { SpyComponent } from './components/spy/spy.component';
 
 
 
@@ -34,6 +35,10 @@ const routes: Routes = [
   {
     path: 'selected/learningPlanets',
     component: LearningPlanetsComponent
+  },
+  {
+    path: 'selected/spy',
+    component: SpyComponent
   }
 
 ];

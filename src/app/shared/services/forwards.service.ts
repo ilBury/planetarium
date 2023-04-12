@@ -67,6 +67,9 @@ export class ForwardsService {
   forwardLearningGame(router: Router) {
     this.router.navigate([`${router.url}/learningPlanets`]);
   }
+  forwardSpyGame(router: Router) {
+    this.router.navigate([`${router.url}/spy`]);
+  }
 
 
 }

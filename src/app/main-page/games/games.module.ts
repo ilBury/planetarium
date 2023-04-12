@@ -13,6 +13,7 @@ import {MatTableModule} from '@angular/material/table';
 import { CardMemoryComponent } from './components/card-memory/card-memory.component';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { LearningPlanetsComponent } from './components/learning-planets/learning-planets.component';
+import { SpyComponent } from './components/spy/spy.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { LearningPlanetsComponent } from './components/learning-planets/learning
     DialogWindowComponent,
     BarleyBreakComponent,
     CardMemoryComponent,
-    LearningPlanetsComponent
+    LearningPlanetsComponent,
+    SpyComponent
   ],
   imports: [
     CommonModule,

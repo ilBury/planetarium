@@ -64,7 +64,7 @@ export class MenuComponent {
         case 'solarSystemGame': this.forward.forwardSolarGame(this.router);break;
         case 'barleyBreakGame': this.forward.forwardBarleyGame(this.router); break;
         case 'memoGame': this.forward.forwardMemoryGame(this.router);break;
-        case 'visualGame': break;
+        case 'visualGame': this.forward.forwardSpyGame(this.router);break;
         case 'learnPlanetsGame': this.forward.forwardLearningGame(this.router);break;
       }
     }
