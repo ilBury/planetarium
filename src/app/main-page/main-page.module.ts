@@ -18,7 +18,11 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { NewsComponent } from './components/news/news.component';
 import {MatMenuModule} from '@angular/material/menu';
-
+import {MatRadioModule} from '@angular/material/radio';
+import { TimeSelectedDirective } from './directives/time-selected.directive';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatDialogModule} from '@angular/material/dialog';
+import { BookingDialogComponent } from './components/booking-dialog/booking-dialog.component';
 
 @NgModule({
   declarations: [
@@ -26,13 +30,18 @@ import {MatMenuModule} from '@angular/material/menu';
     BookingPageComponent,
     SessionsComponent,
     AboutUsComponent,
-    NewsComponent
+    NewsComponent,
+    TimeSelectedDirective,
+    BookingDialogComponent
   ],
   imports: [
     CommonModule,
     MainPageRoutingModule,
+    MatRadioModule,
+    MatDialogModule,
     FormsModule,
     ReactiveFormsModule,
+    MatSnackBarModule,
     MatButtonModule,
     MatCardModule,
     MatExpansionModule,

@@ -1,0 +1,96 @@
+:host {
+  .wrapper {
+    width: 400px;
+    height: 500px;
+    background-color: #000000;
+    padding: 20px 40px;
+    position: relative;
+    .title {
+      color: #6858DC;
+      padding: 0 0 20px 0;
+
+    }
+    .exit {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+    }
+    .info {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      gap: 7%;
+      padding-bottom: 30px;
+      .image {
+        width: 120px;
+        height: 160px;
+        border-radius: 10px;
+      }
+      .session {
+        display: flex;
+        flex-direction: column;
+        gap: 5%;
+        .name {
+          color: #E7D795;
+          margin-bottom: 0;
+        }
+        .description {
+          font-size: 11px;
+        }
+        .date {
+          padding-top: 20px;
+          font-size: 13px;
+          font-weight: bold;
+        }
+      }
+    }
+
+    .more-info {
+      display: flex;
+      flex-direction: column;
+      height: 180px;
+      justify-content: space-between;
+      .color {
+        color: #9E9E9E;
+      }
+      .tickets {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        border-bottom: solid 1px #343333;
+        .count {
+          font-size: 16px;
+          color: #9E9E9E;
+        }
+      }
+    }
+
+    .btn {
+      width: 100%;
+      height: 50px;
+      color: #000000;
+      button {
+        width: 100%;
+        height: 100%;
+        background-color: #6858DC;
+        font-weight: bold;
+      }
+    }
+
+    ::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+      padding: 0;
+      background-color: #000000;
+    }
+    ::ng-deep .mdc-text-field:not(.mdc-text-field--disabled) .mdc-floating-label {
+      color: #9E9E9E !important;
+
+    }
+    ::ng-deep .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::before {
+      border-bottom-color: #343333 !important;
+    }
+
+  }
+}

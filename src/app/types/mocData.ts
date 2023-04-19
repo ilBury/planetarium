@@ -87,7 +87,6 @@ export let users: User[] = [
 
 
 export let sessions: Ticket[] = [
-
   {
     name: 'Интерстеллар',
     discription: 'фантастика, драма, приключения',
@@ -259,3 +258,5 @@ export let planets: Planets[] = [
     name: 'Уран'
   }
 ]
+
+

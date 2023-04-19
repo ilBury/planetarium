@@ -1,0 +1,28 @@
+<div class="wrapper">
+  <h1 class="title" mat-dialog-title>/Оплата</h1>
+  <img class="exit" src="assets/images/exit.png" alt="">
+  <div class="info">
+    <img class="image" src="{{data.session.picture}}" alt="">
+    <div class="session">
+      <h3 class="name">{{data.session.name}}</h3>
+      <span class="description">{{data.session.description}}</span>
+      <span class="date">{{data.day}} февраля, {{data.hour}}</span>
+    </div>
+  </div>
+  <div class="more-info">
+    <span><span class="color">Номер заказа:</span> 12563</span>
+    <div class="tickets">
+      <span class="count">{{data.seats.length}} БИЛЕТA</span>
+      <span class="price">{{data.seats.length * data.session.price}} BYN</span>
+    </div>
+    <mat-form-field appearance="fill">
+      <mat-label>Введите вашу почту</mat-label>
+      <input matInput >
+    </mat-form-field>
+  </div>
+
+  <div class="btn" mat-dialog-actions>
+    <button mat-button (click)="confirm()" >Оформить билет</button>
+  </div>
+</div>
+

@@ -1,56 +1,84 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, OnDestroy, Input } from '@angular/core';
 import { BookedTicket, DATE, Ticket } from 'src/app/shared/types/ticket.type';
 import { ChooseSessionsService } from '../../services/choose-sessions.service';
+import { whatSelected } from '../sessions/sessions.component';
+import { FormControl } from '@angular/forms';
+import { NgClass } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ForwardsService } from 'src/app/shared/services/forwards.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { BookingDialogComponent } from '../booking-dialog/booking-dialog.component';
 
 @Component({
   selector: 'app-booking-page',
   templateUrl: './booking-page.component.html',
   styleUrls: ['./booking-page.component.scss']
 })
-export class BookingPageComponent implements OnInit {
+export class BookingPageComponent implements OnInit, OnDestroy {
 
   public selectedSession!: Ticket;
-  public allDate: DATE[] = [];
-  public month: string[] = [
-    'Январь',
-    'Февраль',
-    'Март',
-    'Апрель',
-    'Май',
-    'Июнь',
-    'Июль',
-    'Август',
-    'Сентябрь',
-    'Октябрь',
-    'Ноябрь',
-    'Декабрь'
-  ]
-  public day: string[] = [
-    'Понедельник',
-    'Вторник',
-    'Среда',
-    'Четверг',
-    'Пятница',
-    'Суббота',
-    'Воскресенье'
-  ]
-  public isPay: boolean = false;
-  public isSelected: boolean = false;
-  public countSeats: number = 0;
+
+
+  public day: string = this.choose.day;
+  @Input() date = new FormControl(this.choose.date);
+
   public reservedSeats: BookedTicket[] = this.choose.reservedSeats;
-  private tempBookedSeat: BookedTicket = {day: '', hour: '', name: '', positions: []};
-  public currentHour = String(this.choose.currentHour).trim();
+
+  public status = this.choose.status;
+  public allTime: DATE[] = [];
+  public hour = this.choose.hour;
+  public hasTime: boolean = this.choose.hasTime;
+  public get Status(): typeof whatSelected {
+    return whatSelected;
+  }
+  public countSeats: number[] = [];
+
 
   constructor(
     private choose: ChooseSessionsService,
-    private el: ElementRef
+    private el: ElementRef,
+    private router: Router,
+    private forwards: ForwardsService,
+    private activatedRoute: ActivatedRoute,
+    private _snackBar: MatSnackBar,
+    public dialog: MatDialog
   ) {
+    this.choose.isPaymentComplete = false;
+  }
 
+  openDialog(): void {
+    const dialogRef = this.dialog.open(BookingDialogComponent, {
+      data: {hour: this.hour, day: this.day, seats: this.countSeats, session: this.selectedSession, confirm: this.confirm}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.cleansingSeats();
+      if(!this.choose.isPaymentComplete) {
+        this.reservedSeats.forEach(val => {
+          if(val.day === this.day && val.hour === this.hour && val.name === val.name) {
+            val.positions.forEach(value => {
+              document.querySelectorAll('.seat')[value].setAttribute('src', 'assets/images/SeatBusy.svg')
+            })
+          }
+        })
+      }
+      this.countSeats = [];
+    });
+  }
+
+  openSnackBar(message: string, action: string) {
+    this._snackBar.open(message, action);
+  }
+
+  ngOnDestroy(): void {
+    this.choose.date = undefined!;
   }
 
   ngOnInit(): void {
     let content = document.querySelector('leftRight-seats');
     let seats = document.querySelectorAll('.booking-seats');
+
     for(let k = 0; k < seats.length; k++) {
       content?.append(seats[k]);
 
@@ -76,150 +104,101 @@ export class BookingPageComponent implements OnInit {
       }
     }
     this.selectedSession = this.choose.selectedSession;
-
-    for(let i = 0; i < this.choose.allDate.length; i++) {
-      for(let j = 0; j < this.selectedSession.date!.length; j++) {
-        if(this.choose.allDate[i].item.toLocaleTimeString([], {hour: 'numeric' , minute: '2-digit'}) === this.selectedSession.date![j].item.toLocaleTimeString([], {hour: 'numeric' , minute: '2-digit'})) {
-
-          this.allDate.push(this.choose.allDate[i]);
-
-          break;
+    this.selectedSession.date?.forEach(val => {
+      if(val.item.getDate() === Number(this.day)) {
+        this.allTime.push(val);
+      }
+    })
+    if(this.hour && this.day && this.selectedSession) {
+      this.reservedSeats.forEach(val => {
+        if(val.day === this.day && val.hour === this.hour && val.name === val.name) {
+          val.positions.forEach(value => {
+            document.querySelectorAll('.seat')[value].setAttribute('src', 'assets/images/SeatBusy.svg')
+          })
         }
-      }
-    }
-
-    console.log(this.choose.reservedSeats);
-    console.log(this.choose.day, this.currentHour, this.choose.selectedSession.name);
-    for(let item of this.choose.reservedSeats) {
-      if(item.day === this.choose.day &&
-        item.hour === String(this.choose.currentHour).trim() &&
-        item.name === this.choose.selectedSession.name) {
-        let tempSeat = document.querySelectorAll('.seat');
-        tempSeat.forEach((value,index) => {
-
-          item.positions.forEach((itemValue, itemIndex) => {
-            if(index === itemValue) {
-              value.setAttribute('src', `assets/images/SeatBusy.svg`);
-              value.removeEventListener("click", (event) =>  this.bookingSeat(event));
-            }
-          })
-
-        })
-      }
-
-    }
-    console.log(this.selectedSession, this.allDate);
-  }
-
-  chooseHour(event: any): void {
-    let disable = document.querySelectorAll('.active');
-    if(disable) {
-      disable.forEach(value => {
-        value.classList.remove('active');
-        value.classList.add('disable');
       })
     }
-    event.target.classList.add('active');
-    event.target.classList.remove('disable');
-    this.currentHour = String(event.target.innerHTML).trim();
-    /* this.tempBookedSeat.day = this.choose.day;
-    this.tempBookedSeat.hour = String(event.target.innerHTML).trim();
-    this.tempBookedSeat.name = this.selectedSession.name; */
-    let flag = false;
-    for(let item of this.choose.reservedSeats) {
 
-      if(item.day === this.choose.day &&
-        item.hour === String(event.target.innerHTML).trim() &&
-        item.name === this.choose.selectedSession.name) {
-        let tempSeat = document.querySelectorAll('.seat');
-        tempSeat.forEach((value,index) => {
-          flag = true;
-          item.positions.forEach((itemValue, itemIndex) => {
-            if(index === itemValue) {
-              value.setAttribute('src', `assets/images/SeatBusy.svg`);
-              value.removeEventListener("click", (event) =>  this.bookingSeat(event));
-            } else {
-              value.setAttribute('src', `assets/images/Seat.svg`);
+  }
 
-             /*  value.addEventListener("click", (event) =>  this.bookingSeat(event)); */
+  apply(event: any) {
+    this.allTime = [];
+    this.date = new FormControl(event.value);
+    this.selectedSession.date?.forEach(val => {
+      if(val.item.getDate() === this.date.value?.getDate()) {
+        this.day = String(val.item.getDate());
+        this.allTime.push(val)
+      }
+    })
+    this.allTime.length === 0 ? this.hasTime = false : this.hasTime = true;
+    this.cleansingSeats();
+    this.hour = "";
+  }
+
+  chooseHour(event: any) {
+    this.hour = event.target.innerHTML.trim();
+    this.cleansingSeats();
+    this.reservedSeats.forEach(val => {
+      if(val.day === this.day && val.hour === this.hour && val.name === val.name) {
+        val.positions.forEach(value => {
+          document.querySelectorAll('.seat')[value].setAttribute('src', 'assets/images/SeatBusy.svg')
+        })
+      }
+    })
+  }
+
+  cleansingSeats() {
+    document.querySelectorAll('.seat').forEach(val => {
+      val.setAttribute('src', 'assets/images/Seat.svg');
+    })
+  }
+
+  active(item: any) {
+    if(this.hour !== item + ':00') {
+      return '';
+    } else {
+      return 'timeSelected';
+    }
+  }
+
+  bookingSeat(event: any) {
+    if(!this.hour || !this.day || !this.selectedSession){ this.openSnackBar('Укажите день и время', 'ок'); return;}
+    if(event.target.getAttribute('src') === 'assets/images/SeatSelected.svg') {
+      event.target.setAttribute('src', 'assets/images/Seat.svg');
+      document.querySelectorAll('.seat').forEach((val, key) => {
+        if(val === event.target) {
+          this.countSeats.forEach((value, index) => {
+            if(value === key) {
+              this.countSeats.splice(index, 1);
             }
           })
-
-        })
-      }
-      else {
-        let tempSeat = document.querySelectorAll('.seat');
-        tempSeat.forEach((value, index) => {
-
-          value.setAttribute('src', `assets/images/Seat.svg`);
-          value.addEventListener("click", (event) =>  this.bookingSeat(event));
-
-        })
-      }
-
-    }
-
-
-  }
-
-  bookingSeat(event: any): void {
-
-    console.log(event.target)
-    if(event.target.getAttribute('src') === `assets/images/SeatSelected.svg`) {
-      event.target.setAttribute('src', `assets/images/Seat.svg`);
-    } else if(event.target.getAttribute('src') === `assets/images/Seat.svg`) {
-      event.target.setAttribute('src', `assets/images/SeatSelected.svg`);
-    }
-    let tempSeat = document.querySelectorAll('.seat');
-    tempSeat.forEach(value => {
-      if(value.getAttribute('src') === `assets/images/SeatSelected.svg`) this.isSelected = true;
-
-    })
-    console.log(this.tempBookedSeat)
-  }
-
-  bookingTicket(): void {
-    if(this.isSelected) {
-      this.isPay = true;
-      let tempSeat = document.querySelectorAll('.seat');
-      tempSeat.forEach(value => {
-        if(value.getAttribute('src') === `assets/images/SeatSelected.svg`) this.countSeats++;
+        }
       })
+      return;
     }
-  }
-
-  buyTicket(): void {
-    let tempSeat = document.querySelectorAll('.seat');
-    this.tempBookedSeat.day = this.choose.day;
-    this.tempBookedSeat.hour = this.currentHour;
-    this.tempBookedSeat.name = this.selectedSession.name;
-
-    tempSeat.forEach((value,index) => {
-      if(value.getAttribute('src') === `assets/images/SeatSelected.svg`){
-        value.setAttribute('src', `assets/images/SeatBusy.svg`);
-        value.removeEventListener("click", (event) =>  this.bookingSeat(event));
-
-        this.tempBookedSeat.positions.push(index);
-
-
+    if(event.target.getAttribute('src') !== 'assets/images/Seat.svg') return;
+    document.querySelectorAll('.seat').forEach((val, key) => {
+      if(val === event.target) {
+        this.countSeats.push(key);
       }
     })
-    let flag = false;
-    for(let item of this.choose.reservedSeats) {
-      if(item.day === this.tempBookedSeat.day &&
-        item.hour === this.tempBookedSeat.hour &&
-        item.name === this.tempBookedSeat.name) {
-          this.tempBookedSeat.positions.forEach(value => {
-            item.positions.push(value);
-          })
-        flag = true;
-      }
-    }
-    if(!flag) this.choose.reservedSeats.push(this.tempBookedSeat);
-
-    console.log(this.choose.reservedSeats);
-    this.tempBookedSeat = {day: '', hour: '', name: '', positions: []};
-    this.isPay = false;;
+    event.target.setAttribute('src', 'assets/images/SeatSelected.svg');
   }
+
+  pay() {
+    if(this.countSeats.length === 0){ this.openSnackBar('Укажите место посадки ', 'ок') ;return;}
+
+
+    this.openDialog();
+  }
+
+  public confirm = () => {
+    let tempticket: BookedTicket = {name: this.selectedSession.name, hour: this.hour, day: this.day, positions: this.countSeats};
+    this.reservedSeats.push(tempticket);
+    this.forwards.forwardSession(this.activatedRoute);
+    this.choose.reservedSeats = this.reservedSeats;
+  }
+
+
 
 }

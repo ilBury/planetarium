@@ -38,33 +38,44 @@
     <div class="rightside-content">
 
       <div class="rightside-date">
-        <span class="title">{{day[allDate[0].item.getDay()]}}, {{allDate[0].item.toLocaleDateString('ru',{day: 'numeric'})}} {{month[allDate[0].item.getMonth()]}}</span>
-        <div class="rightside-time">
-
-          <div  *ngFor="let time of allDate">
-            <span class="active" *ngIf="time.item.toLocaleTimeString('ru', {hour: 'numeric', minute:'2-digit'}) === currentHour;else disable" (click)="chooseHour($event)"  >
-              {{time.item.toLocaleTimeString([], {hour: 'numeric' , minute: '2-digit'})}}
-            </span>
-            <ng-template #disable>
-              <span class="disable" (click)="chooseHour($event)" >
-                {{time.item.toLocaleTimeString([], {hour: 'numeric' , minute: '2-digit'})}}
-              </span>
-            </ng-template>
-          </div>
-
-
-
-
+        <div class="date container">
+          <mat-form-field appearance="fill" class="example-form-field">
+            <mat-label>Выберите дату</mat-label>
+            <input  matInput [matDatepicker]="datepicker" (dateChange)="apply($event)" [value]="date.value">
+            <mat-datepicker-toggle matIconSuffix [for]="datepicker"></mat-datepicker-toggle>
+            <mat-datepicker #datepicker>
+              <mat-datepicker-actions>
+                <button mat-button matDatepickerCancel>Cancel</button>
+                <button mat-raised-button color="primary"  matDatepickerApply>Apply</button>
+              </mat-datepicker-actions>
+            </mat-datepicker>
+          </mat-form-field>
         </div>
+        <div class="time container" *ngIf="hasTime">
+          <span>Выберите время</span>
+          <div class="current-time">
+            <div  *ngFor="let item of allTime">
+              <div class="select-time"
+                  (click)="chooseHour($event)"
+                  [ngClass]="active(item.item.getHours())">
+                {{item.item.getHours()}}:00
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="time container nonTime" *ngIf="!hasTime && date.value">
+          <p>В этот день сеансов, к сожалению, нет!</p>
+        </div>
+
       </div>
       <div class="rightside-room">
-        <div class="leftRight-seats">
+        <div class="leftRight-seats left">
           <div class="booking-seats"></div>
           <div class="booking-seats" ></div>
           <div class="booking-seats"></div>
         </div>
         <span>ЭКРАН</span>
-        <div class="leftRight-seats">
+        <div class="leftRight-seats right">
           <div class="booking-seats" [ngStyle]="{'rotate': '180deg'}"></div>
           <div class="booking-seats" [ngStyle]="{'rotate': '180deg'}"></div>
           <div class="booking-seats" [ngStyle]="{'rotate': '180deg'}" ></div>
@@ -91,43 +102,12 @@
       </div>
       <div class="pay">
         <span>Итого: {{selectedSession.price}} BYN</span>
-        <button mat-flat-button color="primary" (click)="bookingTicket()" >К оплате</button>
+        <button mat-flat-button color="primary" (click)="pay()" >К оплате</button>
       </div>
     </div>
   </div>
 
-  <div class="pay-ticket" *ngIf="isPay">
-    <div class="wrapper">
-      <h3>/ Оплата</h3>
-      <div class="content">
-        <img src="{{selectedSession.picture}}" alt="">
-        <div class="content-text">
-          <span class="title">{{selectedSession.name}}</span>
-          <span class="text">{{selectedSession.discription}}</span>
-          <span class="date">{{day[allDate[0].item.getDay()]}}, {{allDate[0].item.getDay()}} {{month[allDate[0].item.getMonth()]}}</span>
-        </div>
-      </div>
-      <div class="add-info">
-        <span class="add-info-number">Номер заказа: ???</span>
-        <div class="price">
-          <span>{{countSeats}} БИЛЕТА</span>
-          <span>{{selectedSession.price*countSeats}} BYN</span>
-        </div>
-      </div>
-      <form class="create-account-form" >
-        <mat-form-field appearance="fill">
-          <mat-label>Введите вашу почту</mat-label>
-          <input matInput  visibility>
-        </mat-form-field>
-      </form>
-      <div class="btn">
-        <button type="submit" mat-flat-button color="primary" (click)="buyTicket()" >Оформить билет</button>
-      </div>
-      <div class="exit">
-        <button><img src="assets/images/exit.png" alt=""></button>
-      </div>
-    </div>
-  </div>
+
 
 
 </div>
