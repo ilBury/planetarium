@@ -18,10 +18,8 @@ export class ViewComponent implements AfterViewInit {
 
   constructor(
     private forwards: ForwardsService,
-    private activatedRoute: ActivatedRoute,
-    /* private createN: CreateNewsService */
+    private activatedRoute: ActivatedRoute
     ) {
-
   }
 
   ngAfterViewInit (): void {
@@ -36,9 +34,6 @@ export class ViewComponent implements AfterViewInit {
       `
 
       let img = document.createElement('img');
-
-      img.setAttribute('src', `${this.viewNews[1].picture![i]}`);//find - для юзеров с предпочтениями в новостях
-
       let newTags = document.createElement('div');
       newTags.classList.add('new-tags');
       newTags.style.cssText = `
@@ -54,13 +49,20 @@ export class ViewComponent implements AfterViewInit {
       `
 
       let header = document.createElement('span');
-      header.innerHTML = this.viewNews[1].header;
+
 
       let content = document.createElement('span');
-      content.innerHTML = this.viewNews[1].content![i];
+
       content.style.cssText = `
         width: 80%;
       `
+      this.viewNews.forEach((val, index) => {
+        if(val.content) {
+          img.setAttribute('src', `${this.viewNews[index].picture![i]}`);
+          content.innerHTML = this.viewNews[index].content![i];
+          header.innerHTML = this.viewNews[index].header;
+        }
+      })
 
       newTags.append(imgEllipse);
       newTags.append(header);

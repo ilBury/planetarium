@@ -43,7 +43,7 @@
     <span class="rental-wrapper-title">Сейчас в планетарии</span>
     <div class="rental-more">
       <img src="assets/images/calendar.png" alt="">
-      <span>Расписание сеансов</span>
+      <span  (click)="forwardSession()">Расписание сеансов</span>
     </div>
       <div class="rental-slides">
         <div class="rental-slide">
@@ -77,7 +77,9 @@
 <section>
   <div class="news-wrapper">
     <span class="news-wrapper-title">Новости планетария</span>
-    <div class="news"></div>
+    <div class="news">
+
+    </div>
     <div class="more-news">
       <a (click)="news()">Больше новостей</a>
     </div>

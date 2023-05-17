@@ -5,6 +5,7 @@ import { PersonalAreaComponent } from './components/personal-area/personal-area.
 import { RegistrationComponent } from './components/registration/registration.component';
 import { ViewComponent } from './main-page/components/view/view.component';
 import { PageNotFoundComponent } from './shared/components/page-not-found/page-not-found.component';
+import { AdminPageComponent } from './components/admin-page/admin-page.component';
 
 const routes: Routes = [
   {
@@ -27,6 +28,10 @@ const routes: Routes = [
   {
     path: 'personal',
     component: PersonalAreaComponent
+  },
+  {
+    path: 'admin',
+    component: AdminPageComponent
   },
   {
     path: '**',

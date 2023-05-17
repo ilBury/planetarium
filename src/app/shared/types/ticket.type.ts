@@ -6,6 +6,13 @@ export interface Ticket {
   date?: DATE[]
 }
 
+export interface TicketForAdmin {
+  name: string,
+  discription: string,
+  picture: string,
+  price: number,
+  date?: DATE
+}
 
 export interface DATE {
   item: Date

@@ -47,7 +47,7 @@ export class LoginComponent  {
       .then(()=> {
         this.router.navigate(['planetarium']);
 
-        this.authService.changeRoles();
+        this.authService.changeRoles(this.form.value.login!);
       })
       .catch(()=> {
         this.openSnackBar();

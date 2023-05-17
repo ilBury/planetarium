@@ -5,6 +5,8 @@ import { Observable, filter, BehaviorSubject } from 'rxjs';
 
 import { RoleUsers } from '../shared/types/role-users.enum';
 import { users } from '../types/mocData';
+import { User } from '../shared/types/user.type';
+import { HttpClient } from '@angular/common/http';
 
 
 @Injectable({
@@ -12,25 +14,49 @@ import { users } from '../types/mocData';
 })
 export class AuthService {
 
-  private _logTitle$: BehaviorSubject<RoleUsers> = new BehaviorSubject<RoleUsers>(localStorage.getItem('userEmail') ? RoleUsers.USER : RoleUsers.NONAME);
+  private isAdmin: boolean = false;
+  private _logTitle$: BehaviorSubject<RoleUsers> = new BehaviorSubject<RoleUsers>(!localStorage.getItem('userEmail') ?
+  RoleUsers.NONAME : (this.checkIsAdmin() ? RoleUsers.ADMIN : RoleUsers.USER));
 
   get logTitle$() {
     return this._logTitle$.asObservable();
   }
 
-  changeRoles() {
-    this._logTitle$.next(RoleUsers.USER);
 
-  }
 
   constructor(
-    private router: Router
+    private router: Router,
+    private http: HttpClient
   ) {
-
 
   }
 
+  checkIsAdmin(): boolean {
+    let mail = localStorage.getItem('userEmail');
+    let isAdmin = false;
+    if(mail) {
+      users.forEach(val => {
+        if(val.email === mail && val.role === RoleUsers.ADMIN) {
+          isAdmin = true;
+        }
+      })
+    } else return false;
+    if(isAdmin) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
+  changeRoles(login: string) {
+    let isAdmin = false;
+    users.forEach(val => {
+      if(val.login === login && val.role === RoleUsers.ADMIN) {
+        isAdmin = true;
+      }
+    })
+    isAdmin ? this._logTitle$.next(RoleUsers.ADMIN) : this._logTitle$.next(RoleUsers.USER)
+  }
 
 
   login(login: string, password: string): Promise<void> {
@@ -41,7 +67,6 @@ export class AuthService {
     }else {
       return Promise.reject();
     }
-
   }
 
   logout() {
@@ -53,24 +78,4 @@ export class AuthService {
 
 
 
-/*
-export const users = [
- {
-  login: 'Maloletka',
-  password: '1234qwer!',
-  email: 'maloletka@gmail.com',
-  role: RoleUsers.USER
- },
- {
-  login: 'Katletka',
-  password: '1234qwer!',
-  email: 'katletka@gmail.com',
-  role: RoleUsers.USER
- },
- {
-  login: 'Svetka',
-  password: '1234qwer!',
-  email: 'svetka@gmail.com',
-  role: RoleUsers.USER
- }
-] */
+

@@ -16,17 +16,7 @@ export const news: News[] = [
       '3 МАЯ – ВСЕМИРНЫЙ ДЕНЬ СОЛНЦА'
     ]
   },
-  {
-    header: 'Планеты',
-    picture: [
-      'assets/images/newsPlanet1.png',
-      'assets/images/newsPlanet2.png',
-    ],
-    content: [
-      'АСТ­РО­НО­МИ­ЧЕ­СКИЕ НАБЛЮ­ДЕ­НИЯ В МОС­КОВ­СКОМ ПЛА­НЕ­ТА­РИИ',
-      'hello'
-    ]
-  },
+
   {
     header: 'Мероприятия',
     picture: [
@@ -39,7 +29,7 @@ export const news: News[] = [
       '«HANS ZIMMER | SOUNDTRACKS»',
       'ОТКРЫТО БРОНИРОВАНИЕ ШКОЛЬНЫХ ЭКСКУРСИЙ НА МАРТ!',
       'ОТКРЫТО БРОНИРОВАНИЕ ШКОЛЬНЫХ ЭКСКУРСИЙ НА МАРТ!',
-      '12 ФЕВРАЛЯ – ОРКЕСТР «НЕОКЛАССИКА»: ФОРТЕПИАНО + СТРУННЫЕ'
+      '12 ФЕВРАЛЯ – ОРКЕСТР «НЕОКЛАССИКА»: ФОРТЕПИАНО + СТРУННЫЕ',
     ]
   },
   {
@@ -49,6 +39,8 @@ export const news: News[] = [
     header: 'Ракетостроение'
   }
 ]
+
+
 
 
 export let users: User[] = [
@@ -81,6 +73,16 @@ export let users: User[] = [
     interested: [news[2], news[3]],
     avatar: 'assets/images/avatar_5.png',
     avatarBody: 'assets/images/avatar5.png'
+   },
+   {
+    login: 'Adminka',
+    password: '1234qwer!',
+    email: 'adminka@gmail.com',
+    role: RoleUsers.ADMIN,
+    discount: 0,
+    interested: [news[2], news[3]],
+    avatar: 'assets/images/avatar_10.png',
+    avatarBody: 'assets/images/avatar10.png'
    }
 ]
 
@@ -101,7 +103,6 @@ export let sessions: Ticket[] = [
       {item: (new Date(2023, 1, 25, 16))},
       {item: (new Date(2023, 1, 25, 19))},
       {item: (new Date(2023, 1, 25, 23))},
-
     ],
   },
   {

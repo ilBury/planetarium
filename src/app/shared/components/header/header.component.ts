@@ -59,6 +59,9 @@ export class HeaderComponent implements OnInit  {
   personal(): void {
     this.router.navigate(['personal']);
   }
+  admin(): void {
+    this.router.navigate(['admin']);
+  }
 
   forwardView(): void {
     this.forwards.forwardView();

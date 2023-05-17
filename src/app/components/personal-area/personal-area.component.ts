@@ -26,7 +26,6 @@ export class PersonalAreaComponent implements OnInit {
         this.user = this.personalUsers[i].login;
         this.discount = this.personalUsers[i].discount;
         this.avatarBody = this.personalUsers[i].avatarBody;
-        console.log(this.user);
       }
     }
 

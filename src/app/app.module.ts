@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { MatButton, MatButtonModule } from '@angular/material/button';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -19,6 +20,13 @@ import { AuthService } from './services/auth.service';
 import {MatChipsModule} from '@angular/material/chips';
 import { PersonalAreaComponent } from './components/personal-area/personal-area.component';
 import { MatIconModule } from '@angular/material/icon';
+import { AdminPageComponent } from './components/admin-page/admin-page.component';
+import {MatTableModule} from '@angular/material/table';
+import {MatPaginatorModule} from '@angular/material/paginator';
+import { AdminDialogComponent } from './components/admin-dialog/admin-dialog.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatSelectModule} from '@angular/material/select';
+
 
 @NgModule({
   declarations: [
@@ -26,9 +34,12 @@ import { MatIconModule } from '@angular/material/icon';
     LoginComponent,
     RegistrationComponent,
     PersonalAreaComponent,
+    AdminPageComponent,
+    AdminDialogComponent,
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     CommonModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
@@ -41,7 +52,11 @@ import { MatIconModule } from '@angular/material/icon';
     MatSnackBarModule,
     MatSidenavModule,
     MatChipsModule,
-    MatIconModule
+    MatIconModule,
+    MatTableModule,
+    MatPaginatorModule,
+    MatDialogModule,
+    MatSelectModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

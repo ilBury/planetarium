@@ -118,10 +118,9 @@ export class RegistrationComponent    {
       }else {
         this.stepRegistration = StepRegistration.writeData;
         this.router.navigate(['planetarium']);
-        this.authService.changeRoles();
+        this.authService.changeRoles('hello');
         users.push(this.tempUser!);
         localStorage.setItem('userEmail',this.tempUser!.email);
-        console.log(users);
       }
     }
   }

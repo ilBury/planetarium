@@ -1,0 +1,36 @@
+<div class="wrapper">
+  <span class="title">Новый сеанс</span>
+  <form class="create-form" [formGroup]="form">
+    <mat-form-field appearance="fill">
+      <mat-label>Название</mat-label>
+      <input matInput>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Описание</mat-label>
+      <input matInput>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Постер</mat-label>
+      <input matInput>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Время</mat-label>
+      <mat-select>
+        <mat-option value="one">First option</mat-option>
+        <mat-option value="two">Second option</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Дата</mat-label>
+      <mat-select>
+        <mat-option value="one">First option</mat-option>
+        <mat-option value="two">Second option</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Цена</mat-label>
+      <input matInput>
+    </mat-form-field>
+  </form>
+  <button mat-flat-button color="primary"  >Добавить</button>
+</div>

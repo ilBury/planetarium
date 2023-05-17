@@ -15,13 +15,9 @@
   </div>
   <div class="logIn" >
 
-
-
-
-    <button *ngIf="userRoles === roleUsers.NONAME; else flagLogin" (click)="login()">Вход</button>
-    <ng-template #flagLogin>
-      <button (click)="personal()" >Кабинет</button>
-    </ng-template>
+    <button *ngIf="userRoles === roleUsers.NONAME" (click)="login()">Вход</button>
+    <button *ngIf="userRoles === roleUsers.ADMIN" (click)="admin()">Админ</button>
+    <button *ngIf="userRoles === roleUsers.USER" (click)="personal()">Кабинет</button>
 
   </div>
   <div class="burger">
@@ -30,25 +26,20 @@
     </button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item>
-
         <a id="first" (click)="forwardSession()"  (click)="changeProgress($event)" >Сеансы</a>
       </button>
       <button mat-menu-item >
-
         <a (click)="forwardContacts()" (click)="changeProgress($event)">О нас</a>
       </button>
       <button mat-menu-item>
-
         <a (click)="forwardNews()" (click)="changeProgress($event)">Новости</a>
       </button>
       <button mat-menu-item>
-
         <a id="last" (click)="changeProgress($event)">Игры</a>
       </button>
-      <button mat-menu-item *ngIf="userRoles === roleUsers.NONAME; else flagLogin" (click)="login()">Вход</button>
-      <ng-template #flagLogin>
-        <button mat-menu-item (click)="personal()" >Кабинет</button>
-      </ng-template>
+      <button mat-menu-item *ngIf="userRoles === roleUsers.NONAME" (click)="login()">Вход</button>
+      <button mat-menu-item *ngIf="userRoles === roleUsers.ADMIN" (click)="admin()">Админ</button>
+      <button mat-menu-item *ngIf="userRoles === roleUsers.USER" (click)="personal()">Кабинет</button>
     </mat-menu>
   </div>
 
